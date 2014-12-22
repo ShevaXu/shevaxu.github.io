@@ -19,9 +19,38 @@
 
 &lt;h2 id=&#34;toc_0&#34;&gt;Hello world!&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;test&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As a programmer, &lt;em&gt;Hellow world!&lt;/em&gt; is the most familiar way to start a new advanture.&lt;/p&gt;
 
-&lt;p&gt;test&lt;/p&gt;
+&lt;p&gt;So, since it&amp;rsquo;s my first ever blog, or more precisely a space, I would like to state what I expect from building it.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_1&#34;&gt;A notebook online&lt;/h3&gt;
+
+&lt;p&gt;My first thought about the blog is a notebook for IT related material, to share knowledge. That&amp;rsquo;s what I usually get from other IT guys&amp;rsquo; blogs. But then I found out I am not good at writing explanations and I have &lt;em&gt;Evernote&lt;/em&gt; &amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_2&#34;&gt;A web playground&lt;/h3&gt;
+
+&lt;p&gt;I began to learn more advanced web-tech a few months ago and were looking for a project to keep practising the aquired skills. I had tried making things &lt;em&gt;localhost&lt;/em&gt; but it would always be of more motivations if the thing you build can deploy online and show (off) to others. Then I really took some times to find a way to host a site for free where I can build (almost) anything at will &amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_3&#34;&gt;When I met Hugo&lt;/h3&gt;
+
+&lt;p&gt;I have used Github over a year and &lt;em&gt;Github pages&lt;/em&gt; was my first option. It&amp;rsquo;s powered by &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; and somehow I found it not attractive enough. I dropped my space building for a while until I found &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; by accident (I was looking for a solution for &lt;a href=&#34;http://gohugo.io/tutorials/mathjax/&#34;&gt;using MathJax in Markdown&lt;/a&gt;). Then I found &lt;em&gt;Hugo&lt;/em&gt; is a lovely name, with everything configurable and well documented. So, why not give it a shot?&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_4&#34;&gt;Suit up&lt;/h3&gt;
+
+&lt;p&gt;For me, tools always come before builds. I would love to list my weapons below:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Markdown&lt;/em&gt;: I used &lt;a href=&#34;http://macdown.uranusjr.com/&#34;&gt;MacDown&lt;/a&gt; for all my .md file editing since I found it, very impressive real-time preview;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;JavaScripts/html/css&lt;/em&gt;: I am still hesitating between &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt; and &lt;a href=&#34;http://dcloud.io/&#34;&gt;HBuilder&lt;/a&gt;. Only time can tell who&amp;rsquo;s the winner &amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Version control&lt;/em&gt;: Git and Github, no doubt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Debug&lt;/em&gt;: chrome&amp;rsquo;s DevTools is good enough and I&amp;rsquo;m just the beginner about it (&lt;a href=&#34;http://discover-devtools.codeschool.com/&#34;&gt;here&lt;/a&gt; is the course I found about it).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_5&#34;&gt;Talk less, code more&lt;/h3&gt;
+
+&lt;p&gt;I know there should be a long time before anybody else reading my own blog and playing my toy apps. So I would keep my voice down and try to make my codes speak themselves.&lt;/p&gt;
+
+&lt;p&gt;And lastly, forgive my poor English, I don&amp;rsquo;t want to waste time double checking my grammar and spell any more. After all, the only sentence I guarantee perfectly right is &lt;em&gt;Hello world!&lt;/em&gt; :)&lt;/p&gt;
 </description>
     </item>
     
