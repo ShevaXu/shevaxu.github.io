@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Embracing videos with Html5 &middot; Sheva Xu</title>
+
+  
+  <link rel="stylesheet" href="http://shevaxu.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://shevaxu.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://shevaxu.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://shevaxu.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://shevaxu.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://shevaxu.github.io/css/highlight/sunburst.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="The Space of Sheva &middot; Sheva Xu" />
+
+  <meta name="description" content="Hello world!">
+  <meta name="keywords" content="hugo, hyde-s, blog, github">
+  
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <img src="http://en.gravatar.com/avatar/a0a34dab03b94d1ab0e785aba0061c91?s=200" alt="gravatar">
+      <h1>Sheva Xu</h1>
+      <p class="lead">That&#39;s not the shape of my heart.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://shevaxu.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://github.com/ShevaXu">GitHub</a></li>
+      
+      
+      
+      
+    </ul>
+
+    <p>
+      
+      Powered by <a href="http://hugo.spf13.com">Hugo</a> and Hyde-S
+      
+    </p>
+  </div>
+</div>
+
+<div class="content container">
+  <div class="post">
+    <h1>Embracing videos with Html5</h1>
+    <span class="post-date">Dec 23, 2014 &middot; 3 minute read &middot; <a href="http://shevaxu.github.io/post/html5video/#disqus_thread">Comments</a>
+    
+    <br/>
+    
+    <a class="label" href="http://shevaxu.github.io/categories/Technology">Technology</a><a class="label" href="http://shevaxu.github.io/categories/Development">Development</a>
+    </span>
+    
+
+<p>HTML5 comes with the <em>video</em> element. Here&rsquo;s its usage:</p>
+
+<pre><code class="language-html">&lt;video width=&quot;640&quot; height=&quot;360&quot; controls&gt;
+  	&lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  	&lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;
+  	&lt;source src=&quot;movie.webm&quot; type=&quot;video/webm&quot;&gt;
+	Your browser does not support the video tag.
+&lt;/video&gt;
+</code></pre>
+
+<p>And that&rsquo;s what it looks like:</p>
+
+<video width="640" height="360" controls>
+    
+    <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4" type="video/mp4" />
+    <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm" type="video/webm" />
+    
+Your browser does not support the video tag.
+</video>
+
+<p>The multiple sources/formats (the only 3 supported) are for different <a href="http://www.w3schools.com/html/html5_video.asp">browsers</a>. If indeed different movies are provided, the <em>video</em> element plays the first recognized one.</p>
+
+<h3 id="toc_0">What&rsquo;s missing?</h3>
+
+<p>You probably find it ugly and too simple for a modern video player. It should at least shows something, say a preview picture, before being played, and it would be better if it can play subtitle as well. All those require the player to be more controllable, and that&rsquo;s where <em>JavaScript</em> comes in &hellip;</p>
+
+<h2 id="toc_1">Video.js</h2>
+
+<p>When you Google <em>html5 videos</em>, <strong>Video.js</strong> is the top answer you get. After seeing its beautiful <a href="http://www.videojs.com/">website</a> and easy-to-use features, you would not doubt such ranking. It even ships with an online <a href="http://designer.videojs.com/">designer</a> to help you stylish your player. And it&rsquo;s <a href="https://github.com/videojs/video.js">open sourced</a>.</p>
+
+<p>Embeding this player just needs a couple lines of html, and I won&rsquo;t show it here since you spot it right after you go to its website. What I show here is the <strong>shortcode</strong> I write to embed it in <em>Hugo</em> rendered Markdown:</p>
+
+<pre><code class="language-html">&lt;!-- Should find a way to put it in the head when needed --&gt;
+&lt;link href=&quot;http://vjs.zencdn.net/4.10/video-js.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;http://vjs.zencdn.net/4.10/video.js&quot;&gt;&lt;/script&gt;
+&lt;!-- The video --&gt;
+&lt;video class=&quot;video-js vjs-default-skin&quot; controls preload=&quot;auto&quot;
+width=&quot;640&quot; height=&quot;360&quot; {{ with .Get &quot;poster&quot; }} poster=&quot;{{ . }}&quot; {{ end }} data-setup='{}'&gt;
+	{{ with .Get &quot;src&quot; }}
+	&lt;source src=&quot;{{ . }}.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+	&lt;source src=&quot;{{ . }}.webm&quot; type=&quot;video/webm&quot; /&gt;
+	{{ end}}
+	{{ with .Get &quot;vtt&quot; }}
+	&lt;track kind=&quot;captions&quot; label=&quot;English&quot; src=&quot;{{ . }}&quot; srclang=&quot;en&quot; default /&gt;
+	{{ end }}
+&lt;!-- &lt;track kind=&quot;captions&quot; src=&quot;http://example.com/path/to/captions.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot; default&gt; --&gt;
+&lt;p class=&quot;vjs-no-js&quot;&gt;
+	To view this video please enable JavaScript, and consider upgrading to a web browser
+	that &lt;a href=&quot;http://videojs.com/html5-video-support/&quot; target=&quot;_blank&quot;&gt;supports HTML5 video&lt;/a&gt;
+&lt;/p&gt;
+&lt;/video&gt;
+</code></pre>
+
+<p>And the code to call it is even simpler:</p>
+
+<pre><code>{{ % videojs src=&quot;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline&quot; poster=&quot;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&quot; vtt=&quot;/media/captions_PayPal_Austin_en.vtt&quot; % }}
+</code></pre>
+
+<p><em>NOTE</em> that there should be no space between <code>{{</code> and <code>%</code>, I separate them above to prevent <em>Hugo</em> manipulate it instead of showing it as codes. That&rsquo;s what the <em>shortcodes</em> <a href="http://gohugo.io/extras/shortcodes/">docs</a> do and it fools me for a while.</p>
+
+<p>And the player now has a poster and shows subtitle:</p>
+
+<p><link href="http://vjs.zencdn.net/4.10/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/4.10/video.js"></script></p>
+
+<video class="video-js vjs-default-skin" controls preload="auto"
+width="640" height="360"  poster="http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg"  data-setup='{}'>
+    
+    <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4" type="video/mp4" />
+    <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm" type="video/webm" />
+    
+    
+    <track kind="captions" label="English" src="/media/captions_PayPal_Austin_en.vtt" srclang="en" default />
+    
+
+<p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser
+    that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+</p>
+</video>
+
+<h3 id="toc_2">px-video.js</h3>
+
+<p>Another player I found was the <em>Accessible HTML5 Video Player</em>, aka px-video.js. You can see its demo <a href="http://paypal.github.io/accessible-html5-video-player/">here</a>. Actually, the movie/subtitle in this article are from this demo. It&rsquo;s also <a href="https://github.com/paypal/accessible-html5-video-player">Github</a> open sourced.</p>
+
+<p>It provides similar functionalities but different style:</p>
+
+<p><link rel="stylesheet" href="http://paypal.github.io/accessible-html5-video-player/css/px-video.css" /></p>
+
+<div class="px-video-container" id="pxvid">
+    <div class="px-video-img-captions-container">
+        <div class="px-video-captions hide"></div>
+        <video width="640" height="360"  poster="http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg"  controls>
+            
+            
+            <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4" type="video/mp4" />
+            <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm" type="video/webm" />
+            
+            
+            
+            <track kind="captions" label="English captions" src="/media/captions_PayPal_Austin_en.vtt" srclang="en" default />
+            
+            
+            <div>
+                <a  href="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4"  >
+                     <img src="http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg" width="640" height="360" alt="download video" />                  
+                </a>
+            </div>
+        </video>
+    </div>
+    <div class="px-video-controls"></div>
+</div>
+
+<script src="http://paypal.github.io/accessible-html5-video-player/js/px-video.js"></script>
+
+<script>
+
+
+new InitPxVideo({
+    "videoId": "pxvid",
+    "captionsOnDefault": true,
+    
+    
+    
+});
+
+</script>
+
+<p>The shortcodes and calling are similar too.</p>
+
+<p>To compare, <em>px-video.js</em> requires additional initialization script and did not comes with beautiful website and designing tools, which gives <em>video.js</em> a head lead for now.</p>
+
+<h3 id="toc_3">TODO</h3>
+
+<p>The subtitle (<a href="http://dev.w3.org/html5/webvtt/">.vtt</a> format) now suffers the <a href="http://en.wikipedia.org/wiki/Same-origin_policy"><em>same origin policy</em></a> problem, so I have to save it locally before going deep into <a href="http://enable-cors.org">CORS</a> support.</p>
+
+<p>In the shortcodes, the height and width can also be specified. And I would definitely try to access and play with the images from the video content.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "shevaxugithubio";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "shevaxugithubio";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://shevaxu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

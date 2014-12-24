@@ -7,7 +7,155 @@
     <language>en-us</language>
     <author>Sheva Xu</author>
     
-    <updated>Sat, 13 Dec 2014 16:46:18 CST</updated>
+    <updated>Tue, 23 Dec 2014 22:19:47 CST</updated>
+    
+    <item>
+      <title>Embracing videos with Html5</title>
+      <link>http://shevaxu.github.io/post/html5video/</link>
+      <pubDate>Tue, 23 Dec 2014 22:19:47 CST</pubDate>
+      <author>Sheva Xu</author>
+      <guid>http://shevaxu.github.io/post/html5video/</guid>
+      <description>
+
+&lt;p&gt;HTML5 comes with the &lt;em&gt;video&lt;/em&gt; element. Here&amp;rsquo;s its usage:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;video width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; controls&amp;gt;
+  	&amp;lt;source src=&amp;quot;movie.mp4&amp;quot; type=&amp;quot;video/mp4&amp;quot;&amp;gt;
+  	&amp;lt;source src=&amp;quot;movie.ogg&amp;quot; type=&amp;quot;video/ogg&amp;quot;&amp;gt;
+  	&amp;lt;source src=&amp;quot;movie.webm&amp;quot; type=&amp;quot;video/webm&amp;quot;&amp;gt;
+	Your browser does not support the video tag.
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s what it looks like:&lt;/p&gt;
+
+&lt;video width=&#34;640&#34; height=&#34;360&#34; controls&gt;
+    
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt;
+    
+Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;p&gt;The multiple sources/formats (the only 3 supported) are for different &lt;a href=&#34;http://www.w3schools.com/html/html5_video.asp&#34;&gt;browsers&lt;/a&gt;. If indeed different movies are provided, the &lt;em&gt;video&lt;/em&gt; element plays the first recognized one.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_0&#34;&gt;What&amp;rsquo;s missing?&lt;/h3&gt;
+
+&lt;p&gt;You probably find it ugly and too simple for a modern video player. It should at least shows something, say a preview picture, before being played, and it would be better if it can play subtitle as well. All those require the player to be more controllable, and that&amp;rsquo;s where &lt;em&gt;JavaScript&lt;/em&gt; comes in &amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Video.js&lt;/h2&gt;
+
+&lt;p&gt;When you Google &lt;em&gt;html5 videos&lt;/em&gt;, &lt;strong&gt;Video.js&lt;/strong&gt; is the top answer you get. After seeing its beautiful &lt;a href=&#34;http://www.videojs.com/&#34;&gt;website&lt;/a&gt; and easy-to-use features, you would not doubt such ranking. It even ships with an online &lt;a href=&#34;http://designer.videojs.com/&#34;&gt;designer&lt;/a&gt; to help you stylish your player. And it&amp;rsquo;s &lt;a href=&#34;https://github.com/videojs/video.js&#34;&gt;open sourced&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Embeding this player just needs a couple lines of html, and I won&amp;rsquo;t show it here since you spot it right after you go to its website. What I show here is the &lt;strong&gt;shortcode&lt;/strong&gt; I write to embed it in &lt;em&gt;Hugo&lt;/em&gt; rendered Markdown:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- Should find a way to put it in the head when needed --&amp;gt;
+&amp;lt;link href=&amp;quot;http://vjs.zencdn.net/4.10/video-js.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;http://vjs.zencdn.net/4.10/video.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;!-- The video --&amp;gt;
+&amp;lt;video class=&amp;quot;video-js vjs-default-skin&amp;quot; controls preload=&amp;quot;auto&amp;quot;
+width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;quot;poster&amp;quot; }} poster=&amp;quot;{{ . }}&amp;quot; {{ end }} data-setup=&#39;{}&#39;&amp;gt;
+	{{ with .Get &amp;quot;src&amp;quot; }}
+	&amp;lt;source src=&amp;quot;{{ . }}.mp4&amp;quot; type=&amp;quot;video/mp4&amp;quot; /&amp;gt;
+	&amp;lt;source src=&amp;quot;{{ . }}.webm&amp;quot; type=&amp;quot;video/webm&amp;quot; /&amp;gt;
+	{{ end}}
+	{{ with .Get &amp;quot;vtt&amp;quot; }}
+	&amp;lt;track kind=&amp;quot;captions&amp;quot; label=&amp;quot;English&amp;quot; src=&amp;quot;{{ . }}&amp;quot; srclang=&amp;quot;en&amp;quot; default /&amp;gt;
+	{{ end }}
+&amp;lt;!-- &amp;lt;track kind=&amp;quot;captions&amp;quot; src=&amp;quot;http://example.com/path/to/captions.vtt&amp;quot; srclang=&amp;quot;en&amp;quot; label=&amp;quot;English&amp;quot; default&amp;gt; --&amp;gt;
+&amp;lt;p class=&amp;quot;vjs-no-js&amp;quot;&amp;gt;
+	To view this video please enable JavaScript, and consider upgrading to a web browser
+	that &amp;lt;a href=&amp;quot;http://videojs.com/html5-video-support/&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;supports HTML5 video&amp;lt;/a&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the code to call it is even simpler:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ % videojs src=&amp;quot;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline&amp;quot; poster=&amp;quot;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&amp;quot; vtt=&amp;quot;/media/captions_PayPal_Austin_en.vtt&amp;quot; % }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;NOTE&lt;/em&gt; that there should be no space between &lt;code&gt;{{&lt;/code&gt; and &lt;code&gt;%&lt;/code&gt;, I separate them above to prevent &lt;em&gt;Hugo&lt;/em&gt; manipulate it instead of showing it as codes. That&amp;rsquo;s what the &lt;em&gt;shortcodes&lt;/em&gt; &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34;&gt;docs&lt;/a&gt; do and it fools me for a while.&lt;/p&gt;
+
+&lt;p&gt;And the player now has a poster and shows subtitle:&lt;/p&gt;
+
+&lt;p&gt;&lt;link href=&#34;http://vjs.zencdn.net/4.10/video-js.css&#34; rel=&#34;stylesheet&#34;&gt;
+&lt;script src=&#34;http://vjs.zencdn.net/4.10/video.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;video class=&#34;video-js vjs-default-skin&#34; controls preload=&#34;auto&#34;
+width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  data-setup=&#39;{}&#39;&gt;
+    
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt;
+    
+    
+    &lt;track kind=&#34;captions&#34; label=&#34;English&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt;
+    
+
+&lt;p class=&#34;vjs-no-js&#34;&gt;
+    To view this video please enable JavaScript, and consider upgrading to a web browser
+    that &lt;a href=&#34;http://videojs.com/html5-video-support/&#34; target=&#34;_blank&#34;&gt;supports HTML5 video&lt;/a&gt;
+&lt;/p&gt;
+&lt;/video&gt;
+
+&lt;h3 id=&#34;toc_2&#34;&gt;px-video.js&lt;/h3&gt;
+
+&lt;p&gt;Another player I found was the &lt;em&gt;Accessible HTML5 Video Player&lt;/em&gt;, aka px-video.js. You can see its demo &lt;a href=&#34;http://paypal.github.io/accessible-html5-video-player/&#34;&gt;here&lt;/a&gt;. Actually, the movie/subtitle in this article are from this demo. It&amp;rsquo;s also &lt;a href=&#34;https://github.com/paypal/accessible-html5-video-player&#34;&gt;Github&lt;/a&gt; open sourced.&lt;/p&gt;
+
+&lt;p&gt;It provides similar functionalities but different style:&lt;/p&gt;
+
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://paypal.github.io/accessible-html5-video-player/css/px-video.css&#34; /&gt;&lt;/p&gt;
+
+&lt;div class=&#34;px-video-container&#34; id=&#34;pxvid&#34;&gt;
+    &lt;div class=&#34;px-video-img-captions-container&#34;&gt;
+        &lt;div class=&#34;px-video-captions hide&#34;&gt;&lt;/div&gt;
+        &lt;video width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  controls&gt;
+            
+            
+            &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
+            &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt;
+            
+            
+            
+            &lt;track kind=&#34;captions&#34; label=&#34;English captions&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt;
+            
+            
+            &lt;div&gt;
+                &lt;a  href=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34;  &gt;
+                     &lt;img src=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34; width=&#34;640&#34; height=&#34;360&#34; alt=&#34;download video&#34; /&gt;                  
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/video&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;px-video-controls&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&#34;http://paypal.github.io/accessible-html5-video-player/js/px-video.js&#34;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+
+
+new InitPxVideo({
+    &#34;videoId&#34;: &#34;pxvid&#34;,
+    &#34;captionsOnDefault&#34;: true,
+    
+    
+    
+});
+
+&lt;/script&gt;
+
+&lt;p&gt;The shortcodes and calling are similar too.&lt;/p&gt;
+
+&lt;p&gt;To compare, &lt;em&gt;px-video.js&lt;/em&gt; requires additional initialization script and did not comes with beautiful website and designing tools, which gives &lt;em&gt;video.js&lt;/em&gt; a head lead for now.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_3&#34;&gt;TODO&lt;/h3&gt;
+
+&lt;p&gt;The subtitle (&lt;a href=&#34;http://dev.w3.org/html5/webvtt/&#34;&gt;.vtt&lt;/a&gt; format) now suffers the &lt;a href=&#34;http://en.wikipedia.org/wiki/Same-origin_policy&#34;&gt;&lt;em&gt;same origin policy&lt;/em&gt;&lt;/a&gt; problem, so I have to save it locally before going deep into &lt;a href=&#34;http://enable-cors.org&#34;&gt;CORS&lt;/a&gt; support.&lt;/p&gt;
+
+&lt;p&gt;In the shortcodes, the height and width can also be specified. And I would definitely try to access and play with the images from the video content.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>About this space</title>
