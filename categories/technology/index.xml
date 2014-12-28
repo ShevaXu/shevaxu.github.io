@@ -3,7 +3,7 @@
   <channel>
       <title>Technology on The Space of Sheva </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://ShevaXu.github.io/categories/technology/index.xml/</link>
+    <link>http://localhost:1313/categories/technology/index.xml/</link>
     <language>en-us</language>
     <author>Sheva Xu</author>
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Embracing videos with Html5</title>
-      <link>http://shevaxu.github.io/post/html5video/</link>
+      <link>http://localhost:1313/post/html5video/</link>
       <pubDate>Tue, 23 Dec 2014 22:19:47 CST</pubDate>
       <author>Sheva Xu</author>
-      <guid>http://shevaxu.github.io/post/html5video/</guid>
+      <guid>http://localhost:1313/post/html5video/</guid>
       <description>
 
 &lt;p&gt;HTML5 comes with the &lt;em&gt;video&lt;/em&gt; element. Here&amp;rsquo;s its usage:&lt;/p&gt;
@@ -79,23 +79,20 @@ width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;q
 
 &lt;p&gt;And the player now has a poster and shows subtitle:&lt;/p&gt;
 
-&lt;p&gt;&lt;link href=&#34;http://vjs.zencdn.net/4.10/video-js.css&#34; rel=&#34;stylesheet&#34;&gt;
-&lt;script src=&#34;http://vjs.zencdn.net/4.10/video.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&#34;http://vjs.zencdn.net/4.10/video.js&#34;&gt;&lt;/script&gt;
 
-&lt;video class=&#34;video-js vjs-default-skin&#34; controls preload=&#34;auto&#34;
-width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  data-setup=&#39;{}&#39;&gt;
+&lt;video class=&#34;video-js vjs-default-skin&#34; controls preload=&#34;auto&#34; width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  data-setup=&#39;{}&#39;&gt;
     
     &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
-    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt;
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt; 
     
     
-    &lt;track kind=&#34;captions&#34; label=&#34;English&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt;
+    &lt;track kind=&#34;captions&#34; label=&#34;English&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt; 
     
-
-&lt;p class=&#34;vjs-no-js&#34;&gt;
-    To view this video please enable JavaScript, and consider upgrading to a web browser
-    that &lt;a href=&#34;http://videojs.com/html5-video-support/&#34; target=&#34;_blank&#34;&gt;supports HTML5 video&lt;/a&gt;
-&lt;/p&gt;
+    
+    &lt;p class=&#34;vjs-no-js&#34;&gt;
+        To view this video please enable JavaScript, and consider upgrading to a web browser that &lt;a href=&#34;http://videojs.com/html5-video-support/&#34; target=&#34;_blank&#34;&gt;supports HTML5 video&lt;/a&gt;
+    &lt;/p&gt;
 &lt;/video&gt;
 
 &lt;h3 id=&#34;toc_2&#34;&gt;px-video.js&lt;/h3&gt;
@@ -104,8 +101,6 @@ width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/ac
 
 &lt;p&gt;It provides similar functionalities but different style:&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://paypal.github.io/accessible-html5-video-player/css/px-video.css&#34; /&gt;&lt;/p&gt;
-
 &lt;div class=&#34;px-video-container&#34; id=&#34;pxvid&#34;&gt;
     &lt;div class=&#34;px-video-img-captions-container&#34;&gt;
         &lt;div class=&#34;px-video-captions hide&#34;&gt;&lt;/div&gt;
@@ -113,36 +108,35 @@ width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/ac
             
             
             &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
-            &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt;
+            &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt; 
             
             
             
-            &lt;track kind=&#34;captions&#34; label=&#34;English captions&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt;
+            &lt;track kind=&#34;captions&#34; label=&#34;English captions&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt; 
             
             
             &lt;div&gt;
-                &lt;a  href=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34;  &gt;
+                &lt;a  href=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; &gt;
                      &lt;img src=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34; width=&#34;640&#34; height=&#34;360&#34; alt=&#34;download video&#34; /&gt;                  
                 &lt;/a&gt;
             &lt;/div&gt;
         &lt;/video&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;px-video-controls&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;
+    
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;px-video-controls&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;script src=&#34;http://paypal.github.io/accessible-html5-video-player/js/px-video.js&#34;&gt;&lt;/script&gt;
 
 &lt;script&gt;
-
-
-new InitPxVideo({
-    &#34;videoId&#34;: &#34;pxvid&#34;,
-    &#34;captionsOnDefault&#34;: true,
     
-    
-    
-});
-
+    new InitPxVideo({
+        &#34;videoId&#34;: &#34;pxvid&#34;,
+        &#34;captionsOnDefault&#34;: true,
+    });
 &lt;/script&gt;
 
 &lt;p&gt;The shortcodes and calling are similar too.&lt;/p&gt;
