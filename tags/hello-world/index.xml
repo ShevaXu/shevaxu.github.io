@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Hello-World on The Space of Sheva </title>
+      <title>Hello-World on Space of Sheva </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/tags/hello-world/index.xml/</link>
+    <link>http://ShevaXu.github.io/tags/hello-world/index.xml/</link>
     <language>en-us</language>
     <author>Sheva Xu</author>
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>About this space</title>
-      <link>http://localhost:1313/post/about/</link>
+      <link>http://shevaxu.github.io/post/about/</link>
       <pubDate>Sat, 13 Dec 2014 16:46:18 CST</pubDate>
       <author>Sheva Xu</author>
-      <guid>http://localhost:1313/post/about/</guid>
+      <guid>http://shevaxu.github.io/post/about/</guid>
       <description>
 
 &lt;p&gt;As a programmer, &lt;em&gt;Hello world!&lt;/em&gt; is the most familiar way to start a new advanture.&lt;/p&gt;

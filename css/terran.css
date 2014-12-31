@@ -4,3 +4,77 @@
  * Must be linked after clean-blog.min.css to effect
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
+
+body {
+	background-color: #D2E4B4;
+}
+
+a img:hover,
+a img:focus {
+	cursor: pointer;
+}
+
+.cd-fixed-bg {
+	min-height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+	opacity: 0.5;
+	z-index: -1;
+}
+
+body::before {
+	position: fixed;
+	content: "";
+	background: url('../img/bg.png');
+	opacity: 0.05;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+hr {
+	border-width: 2px;
+  border-color: inherit;
+}
+
+@media only screen and (min-width: 768px) {
+	.intro-header .post-heading,
+	.intro-header .page-heading {
+		padding: 100px 0 50px 0;
+	}	
+}
+
+.intro-header .post-heading .meta .label {
+	background-color: #fff;
+	color: #313131;
+	padding: 0.1em 0.3em;
+	margin: 0 0.1em;
+}
+
+.intro-header .post-heading .meta .label:hover,
+.intro-header .post-heading .meta .label:focus {
+  background-color: #F7ECB5;
+}
+
+.label-summary {
+	background-color: #404040;
+}
+
+.label-summary:hover,
+.label-summary:focus {
+  background-color: #0085a1;
+}
+
+.post-preview > .post-meta {
+  margin-top: 10px;
+}

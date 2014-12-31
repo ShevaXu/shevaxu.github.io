@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Posts on The Space of Sheva </title>
+      <title>Posts on Space of Sheva </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/post/index.xml/</link>
+    <link>http://ShevaXu.github.io/post/index.xml/</link>
     <language>en-us</language>
     <author>Sheva Xu</author>
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Embracing videos with Html5</title>
-      <link>http://localhost:1313/post/html5video/</link>
+      <link>http://shevaxu.github.io/post/html5video/</link>
       <pubDate>Tue, 23 Dec 2014 22:19:47 CST</pubDate>
       <author>Sheva Xu</author>
-      <guid>http://localhost:1313/post/html5video/</guid>
+      <guid>http://shevaxu.github.io/post/html5video/</guid>
       <description>
 
 &lt;p&gt;HTML5 comes with the &lt;em&gt;video&lt;/em&gt; element. Here&amp;rsquo;s its usage:&lt;/p&gt;
@@ -101,6 +101,8 @@ width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;q
 
 &lt;p&gt;It provides similar functionalities but different style:&lt;/p&gt;
 
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://paypal.github.io/accessible-html5-video-player/css/px-video.css&#34; /&gt;&lt;/p&gt;
+
 &lt;div class=&#34;px-video-container&#34; id=&#34;pxvid&#34;&gt;
     &lt;div class=&#34;px-video-img-captions-container&#34;&gt;
         &lt;div class=&#34;px-video-captions hide&#34;&gt;&lt;/div&gt;
@@ -122,12 +124,8 @@ width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;q
             &lt;/div&gt;
         &lt;/video&gt;
     &lt;/div&gt;
-    
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;px-video-controls&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+    &lt;div class=&#34;px-video-controls&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
 
 &lt;script src=&#34;http://paypal.github.io/accessible-html5-video-player/js/px-video.js&#34;&gt;&lt;/script&gt;
 
@@ -153,10 +151,10 @@ width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;q
     
     <item>
       <title>About this space</title>
-      <link>http://localhost:1313/post/about/</link>
+      <link>http://shevaxu.github.io/post/about/</link>
       <pubDate>Sat, 13 Dec 2014 16:46:18 CST</pubDate>
       <author>Sheva Xu</author>
-      <guid>http://localhost:1313/post/about/</guid>
+      <guid>http://shevaxu.github.io/post/about/</guid>
       <description>
 
 &lt;p&gt;As a programmer, &lt;em&gt;Hello world!&lt;/em&gt; is the most familiar way to start a new advanture.&lt;/p&gt;
