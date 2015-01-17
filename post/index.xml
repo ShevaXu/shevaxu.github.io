@@ -10,14 +10,26 @@
     <updated>Tue, 23 Dec 2014 22:19:47 CST</updated>
     
     <item>
-      <title>Embracing videos with Html5</title>
+      <title>Embracing HTML5 and HEVC for web videos&#39; future</title>
       <link>http://shevaxu.github.io/post/html5video/</link>
       <pubDate>Tue, 23 Dec 2014 22:19:47 CST</pubDate>
       <author>Sheva Xu</author>
       <guid>http://shevaxu.github.io/post/html5video/</guid>
       <description>
 
-&lt;p&gt;HTML5 comes with the &lt;em&gt;video&lt;/em&gt; element. Here&amp;rsquo;s its usage:&lt;/p&gt;
+&lt;p&gt;Once upon a time, &lt;em&gt;Adobe Flash&lt;/em&gt; was dominated for web video playing, and myself used to be a fan of the Flash family, having fun with actionscript for a while. But now it has to worry about its future since more and more complains against its being closed, proprietary, power-consumed and not touch friendly.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Flash&lt;/em&gt; was created during the PC era – for PCs and mice&amp;hellip; New open standards created in the mobile era, such as &lt;em&gt;HTML5&lt;/em&gt;, will win on mobile devices (and PCs too).&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; Steve Jobs&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For now Apple seems to have won this battle and &lt;a href=&#34;https://www.apple.com/hotnews/thoughts-on-flash/&#34;&gt;the &lt;em&gt;thoughts on flash&lt;/em&gt; letter&lt;/a&gt; appeared to be the death sentence in advance. But the emergence of HTML5 might be the fuse of Flash&amp;rsquo;s fall down.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_0&#34;&gt;HTML5 Video Element&lt;/h2&gt;
+
+&lt;p&gt;Most modern browsers support the HTML5 &lt;code&gt;&amp;lt;video&amp;gt;&lt;/code&gt; element/tag. The embedding is simple:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;video width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; controls&amp;gt;
   	&amp;lt;source src=&amp;quot;movie.mp4&amp;quot; type=&amp;quot;video/mp4&amp;quot;&amp;gt;
@@ -27,31 +39,45 @@
 &amp;lt;/video&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;And that&amp;rsquo;s what it looks like:&lt;/p&gt;
+&lt;p&gt;(The video and related material are from the Paypal &lt;a href=&#34;http://paypal.github.io/accessible-html5-video-player/&#34;&gt;demo&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;The multiple sources/formats above are for different and if indeed different movies are provided, the first recognized one will be played. I will talk about video format later, let&amp;rsquo;s see what it really looks like first:&lt;/p&gt;
 
 &lt;video width=&#34;640&#34; height=&#34;360&#34; controls&gt;
     
     &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
     &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt;
     
-Your browser does not support the video tag.
+    Your browser does not support the video tag.
 &lt;/video&gt;
 
-&lt;p&gt;The multiple sources/formats (the only 3 supported) are for different &lt;a href=&#34;http://www.w3schools.com/html/html5_video.asp&#34;&gt;browsers&lt;/a&gt;. If indeed different movies are provided, the &lt;em&gt;video&lt;/em&gt; element plays the first recognized one.&lt;/p&gt;
-
-&lt;h3 id=&#34;toc_0&#34;&gt;What&amp;rsquo;s missing?&lt;/h3&gt;
-
-&lt;p&gt;You probably find it ugly and too simple for a modern video player. It should at least shows something, say a preview picture, before being played, and it would be better if it can play subtitle as well. All those require the player to be more controllable, and that&amp;rsquo;s where &lt;em&gt;JavaScript&lt;/em&gt; comes in &amp;hellip;&lt;/p&gt;
+&lt;p&gt;Not bad, huh. It has most of what you want from a web video player: the playback control and the volumn bar are all ready, and you can even make it full-screen. These actions can also be control using &lt;em&gt;JavaScript&lt;/em&gt;, which can actually achieve far more customizations of the player&amp;rsquo;s behaviours. For example, you can control when it should &lt;em&gt;play()/pause()&lt;/em&gt; by another &lt;em&gt;button&lt;/em&gt; element. For more details, see the &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video&#34;&gt;mozilla guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;toc_1&#34;&gt;Video.js&lt;/h2&gt;
 
-&lt;p&gt;When you Google &lt;em&gt;html5 videos&lt;/em&gt;, &lt;strong&gt;Video.js&lt;/strong&gt; is the top answer you get. After seeing its beautiful &lt;a href=&#34;http://www.videojs.com/&#34;&gt;website&lt;/a&gt; and easy-to-use features, you would not doubt such ranking. It even ships with an online &lt;a href=&#34;http://designer.videojs.com/&#34;&gt;designer&lt;/a&gt; to help you stylish your player. And it&amp;rsquo;s &lt;a href=&#34;https://github.com/videojs/video.js&#34;&gt;open sourced&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I did not realize what is missing for the native player till I saw &lt;em&gt;Video.js&lt;/em&gt;:
+it should at least shows something, say, a poster/preview picture, before the video being played; and it would be better if it can play subtitles. And that&amp;rsquo;s not the only things Video.js offers.&lt;/p&gt;
 
-&lt;p&gt;Embeding this player just needs a couple lines of html, and I won&amp;rsquo;t show it here since you spot it right after you go to its website. What I show here is the &lt;strong&gt;shortcode&lt;/strong&gt; I write to embed it in &lt;em&gt;Hugo&lt;/em&gt; rendered Markdown:&lt;/p&gt;
+&lt;p&gt;It is &lt;a href=&#34;https://github.com/videojs/video.js&#34;&gt;open-source&lt;/a&gt; and easy to use, with a well-decorated &lt;a href=&#34;http://www.videojs.com/&#34;&gt;website&lt;/a&gt; and even an &lt;a href=&#34;http://designer.videojs.com/&#34;&gt;online designer&lt;/a&gt; to help you stylish your player. I did not stylish my own player yet because its default appearance looks satisfactory already:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- Should find a way to put it in the head when needed --&amp;gt;
-&amp;lt;link href=&amp;quot;http://vjs.zencdn.net/4.10/video-js.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
-&amp;lt;script src=&amp;quot;http://vjs.zencdn.net/4.10/video.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;script src=&#34;//vjs.zencdn.net/4.11/video.js&#34;&gt;&lt;/script&gt;
+
+&lt;video class=&#34;video-js vjs-default-skin&#34; controls preload=&#34;auto&#34; width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  data-setup=&#39;{}&#39;&gt;
+    
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
+    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt; 
+    
+    
+    &lt;track kind=&#34;captions&#34; label=&#34;English&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt; 
+    
+    &lt;p class=&#34;vjs-no-js&#34;&gt;
+        Please enable JavaScript or consider upgrading to a modern browser.
+    &lt;/p&gt;
+&lt;/video&gt;
+
+&lt;p&gt;Embedding this player just needs a couple lines of html and I won&amp;rsquo;t show it here since you will find out right on its website. What I show here is the &lt;strong&gt;shortcode&lt;/strong&gt; I write to embed it in &lt;em&gt;&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;&lt;/em&gt; (the site generator I used for this blog) rendered Markdown:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script src=&amp;quot;//vjs.zencdn.net/4.11/video.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
 &amp;lt;!-- The video --&amp;gt;
 &amp;lt;video class=&amp;quot;video-js vjs-default-skin&amp;quot; controls preload=&amp;quot;auto&amp;quot;
 width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;quot;poster&amp;quot; }} poster=&amp;quot;{{ . }}&amp;quot; {{ end }} data-setup=&#39;{}&#39;&amp;gt;
@@ -62,133 +88,179 @@ width=&amp;quot;640&amp;quot; height=&amp;quot;360&amp;quot; {{ with .Get &amp;q
 	{{ with .Get &amp;quot;vtt&amp;quot; }}
 	&amp;lt;track kind=&amp;quot;captions&amp;quot; label=&amp;quot;English&amp;quot; src=&amp;quot;{{ . }}&amp;quot; srclang=&amp;quot;en&amp;quot; default /&amp;gt;
 	{{ end }}
-&amp;lt;!-- &amp;lt;track kind=&amp;quot;captions&amp;quot; src=&amp;quot;http://example.com/path/to/captions.vtt&amp;quot; srclang=&amp;quot;en&amp;quot; label=&amp;quot;English&amp;quot; default&amp;gt; --&amp;gt;
-&amp;lt;p class=&amp;quot;vjs-no-js&amp;quot;&amp;gt;
-	To view this video please enable JavaScript, and consider upgrading to a web browser
-	that &amp;lt;a href=&amp;quot;http://videojs.com/html5-video-support/&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;supports HTML5 video&amp;lt;/a&amp;gt;
-&amp;lt;/p&amp;gt;
+	&amp;lt;p class=&amp;quot;vjs-no-js&amp;quot;&amp;gt;
+		Please enable JavaScript or consider upgrading to a modern browser.
+	&amp;lt;/p&amp;gt;
 &amp;lt;/video&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;And the code to call it is even simpler:&lt;/p&gt;
+&lt;p&gt;And the &amp;ldquo;caller&amp;rdquo; in Markdown:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{{ % videojs src=&amp;quot;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline&amp;quot; poster=&amp;quot;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&amp;quot; vtt=&amp;quot;/media/captions_PayPal_Austin_en.vtt&amp;quot; % }}
+&lt;pre&gt;&lt;code&gt;{{ % videojs src=&amp;quot;url/to/file.no-extension&amp;quot; poster=&amp;quot;url/to/an/image&amp;quot; vtt=&amp;quot;the-subtitle.vtt&amp;quot; % }}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;em&gt;NOTE&lt;/em&gt; that there should be no space between &lt;code&gt;{{&lt;/code&gt; and &lt;code&gt;%&lt;/code&gt;, I separate them above to prevent &lt;em&gt;Hugo&lt;/em&gt; manipulate it instead of showing it as codes. That&amp;rsquo;s what the &lt;em&gt;shortcodes&lt;/em&gt; &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34;&gt;docs&lt;/a&gt; do and it fools me for a while.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt; that there should be no space between &lt;code&gt;{{&lt;/code&gt; and &lt;code&gt;%&lt;/code&gt;, I separate them above to prevent &lt;em&gt;Hugo&lt;/em&gt; manipulate it instead of showing it as codes. I miss that in the &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34;&gt;&lt;em&gt;shortcodes docs&lt;/em&gt;&lt;/a&gt; and suffered from it for a while.&lt;/p&gt;
 
-&lt;p&gt;And the player now has a poster and shows subtitle:&lt;/p&gt;
+&lt;h3 id=&#34;toc_2&#34;&gt;Alternatives&lt;/h3&gt;
 
-&lt;script src=&#34;http://vjs.zencdn.net/4.10/video.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Another player I found was the &lt;em&gt;Accessible HTML5 Video Player&lt;/em&gt;, aka px-video.js, which was actually the first customized HTML5 player occurred to me through its &lt;a href=&#34;http://paypal.github.io/accessible-html5-video-player/&#34;&gt;online demo&lt;/a&gt;. It&amp;rsquo;s also &lt;a href=&#34;https://github.com/paypal/accessible-html5-video-player&#34;&gt;Github&lt;/a&gt; open-source, and provides similar functionalities.&lt;/p&gt;
 
-&lt;video class=&#34;video-js vjs-default-skin&#34; controls preload=&#34;auto&#34; width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  data-setup=&#39;{}&#39;&gt;
-    
-    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
-    &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt; 
-    
-    
-    &lt;track kind=&#34;captions&#34; label=&#34;English&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt; 
-    
-    
-    &lt;p class=&#34;vjs-no-js&#34;&gt;
-        To view this video please enable JavaScript, and consider upgrading to a web browser that &lt;a href=&#34;http://videojs.com/html5-video-support/&#34; target=&#34;_blank&#34;&gt;supports HTML5 video&lt;/a&gt;
-    &lt;/p&gt;
-&lt;/video&gt;
+&lt;p&gt;After all, I decided to use Video.js for this site mainly for the sake of Hugo compatibility. The comparison between these two here is from the viewpoint of embedding it in Markdown (then static html) by &lt;em&gt;Hugo shortcode&lt;/em&gt;. Both of them need to include a js script and a css stylesheet. However, &lt;em&gt;Video.js&lt;/em&gt; only requires changing the class of the video tag while &lt;em&gt;px-video.js&lt;/em&gt; requires additional initialization script, which make it more prone to unexpected errors during Hugo rendering. I indeed happened during my developing/blogging. (And the online designer and complete docs are extra bonuses for Video.js.)&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_2&#34;&gt;px-video.js&lt;/h3&gt;
+&lt;h3 id=&#34;toc_3&#34;&gt;TODOs&lt;/h3&gt;
 
-&lt;p&gt;Another player I found was the &lt;em&gt;Accessible HTML5 Video Player&lt;/em&gt;, aka px-video.js. You can see its demo &lt;a href=&#34;http://paypal.github.io/accessible-html5-video-player/&#34;&gt;here&lt;/a&gt;. Actually, the movie/subtitle in this article are from this demo. It&amp;rsquo;s also &lt;a href=&#34;https://github.com/paypal/accessible-html5-video-player&#34;&gt;Github&lt;/a&gt; open sourced.&lt;/p&gt;
+&lt;p&gt;I had an impulse to implement my own customized player once. But then I thought why should I bother rebuilding the car from the wheels while I had one running. So I narrow down what should be done further, if necessary:&lt;/p&gt;
 
-&lt;p&gt;It provides similar functionalities but different style:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The subtitle (&lt;a href=&#34;http://dev.w3.org/html5/webvtt/&#34;&gt;.vtt&lt;/a&gt; format) now suffers the &lt;a href=&#34;http://en.wikipedia.org/wiki/Same-origin_policy&#34;&gt;&lt;em&gt;same origin policy&lt;/em&gt;&lt;/a&gt; problem, so I have to save it locally before going deep into &lt;a href=&#34;http://enable-cors.org&#34;&gt;CORS&lt;/a&gt; support.&lt;/li&gt;
+&lt;li&gt;In the shortcodes, the height and width should also be able to specify.&lt;/li&gt;
+&lt;li&gt;Try out the online designer to make the player matching the theme of this site.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://paypal.github.io/accessible-html5-video-player/css/px-video.css&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;toc_4&#34;&gt;Canvas&lt;/h2&gt;
 
-&lt;div class=&#34;px-video-container&#34; id=&#34;pxvid&#34;&gt;
-    &lt;div class=&#34;px-video-img-captions-container&#34;&gt;
-        &lt;div class=&#34;px-video-captions hide&#34;&gt;&lt;/div&gt;
-        &lt;video width=&#34;640&#34; height=&#34;360&#34;  poster=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34;  controls&gt;
-            
-            
-            &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; type=&#34;video/mp4&#34; /&gt;
-            &lt;source src=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.webm&#34; type=&#34;video/webm&#34; /&gt; 
-            
-            
-            
-            &lt;track kind=&#34;captions&#34; label=&#34;English captions&#34; src=&#34;/media/captions_PayPal_Austin_en.vtt&#34; srclang=&#34;en&#34; default /&gt; 
-            
-            
-            &lt;div&gt;
-                &lt;a  href=&#34;https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4&#34; &gt;
-                     &lt;img src=&#34;http://paypal.github.io/accessible-html5-video-player/media/poster_PayPal_Austin2.jpg&#34; width=&#34;640&#34; height=&#34;360&#34; alt=&#34;download video&#34; /&gt;                  
-                &lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/video&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;px-video-controls&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;Another benefic of using HTML5 video is you can manipulate the video data in real time and incorporate any visual effect you want with the help of &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt; element.&lt;/p&gt;
 
-&lt;script src=&#34;http://paypal.github.io/accessible-html5-video-player/js/px-video.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;You can accomplish that by 3 simple steps:&lt;/p&gt;
+
+&lt;p&gt;I. put a video element and a canvas element into the html, and get them in javascript;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;video id=&amp;quot;vid&amp;quot; src=&amp;quot;video.mp4&amp;quot;/&amp;gt;
+&amp;lt;canvas id=&amp;quot;cvs&amp;quot; width=&amp;quot;320&amp;quot; height=&amp;quot;240&amp;quot;/&amp;gt;
+...
+var vid = document.getElementById(&#39;vid&#39;);
+var cvs = document.getElementById(&#39;cvs&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;II. get a handle of the 2D context of the canvas and draw video content on it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var ctx = cvs.getContext(&#39;2d&#39;);
+// this can be triggered by a timer or a button click
+ctx.drawImage(vid, 0, 0, width, height);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;III. get the image data out of the context, do whatever:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var frame = ctx.getImageData(0, 0, w, h);
+// access the RGBA element of pixel i
+var r = frame[i * 4 + 0];
+var g = frame[i * 4 + 1];
+var b = frame[i * 4 + 2];
+var a = frame[i * 4 + 3];
+...
+// put it back to another canvas context with changed frame
+ctx2.putImageData(frame2, 0, 0);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, a lot more can be done on the canvas, &lt;a href=&#34;http://diveintohtml5.info/canvas.html#divingin&#34;&gt;this tutorial&lt;/a&gt; a good starting point, or &lt;a href=&#34;http://www.html5multimedia.com/code/ch9/video-canvas-screenshot.html&#34;&gt;the screenshot demo&lt;/a&gt;. However, I plan to explore so much more that I think it should be in another post. So I will spare an example here and turn my focus back to videos.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;HEVC&lt;/h2&gt;
+
+&lt;p&gt;The emergence of HEVC (a.k.a H.265) is another excitement of the future of videos. It&amp;rsquo;s said to be half the size of the now dominating H.264 format while keeping the same visual quality. (If you only know the container, e.g., mkv or mp4, and never heard of real video format, you may skip this part.)&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s really a savior for 4K and even 8K videos. However, it&amp;rsquo;s still too early for HEVC to take over H.264&amp;rsquo;s world since the encoding/decoding cost of HEVC are much higher (for encoding it&amp;rsquo;s time and computation resources consumed, and for decoding it&amp;rsquo;s the power and speed).&lt;/p&gt;
+
+&lt;p&gt;I would not dive into explaining the detailed pros/cons and the future of it (it will become dominating for a while and being taken over by another more advanced format, for sure). Rather, I&amp;rsquo;d like to show an example of how to play it on a not-yet-naively-supported browser.&lt;/p&gt;
+
+&lt;p&gt;The open-source project &lt;a href=&#34;www.libde265.org&#34;&gt;libde265&lt;/a&gt; provides a javascript decoder for it. Below are just a copy of its original &lt;a href=&#34;https://strukturag.github.io/libde265.js/&#34;&gt;demo&lt;/a&gt; with video content substituted (I re-encoded the video clip to make the whole post concistent). The decoded frames also utilize the canvas element:&lt;/p&gt;
+
+&lt;p&gt;
+&lt;button id=&#34;play-hevc&#34;&gt;Play&lt;/button&gt;&amp;nbsp;
+&lt;span id=&#34;status&#34;&gt;The blank space below are the canvas for the HEVC video.&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;canvas id=&#34;hevc-display&#34; width=&#34;640&#34; height=&#34;360&#34;&gt;&lt;/canvas&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;../../js/libde265.min.js&#34;&gt;&lt;/script&gt;
 
 &lt;script&gt;
-    
-    new InitPxVideo({
-        &#34;videoId&#34;: &#34;pxvid&#34;,
-        &#34;captionsOnDefault&#34;: true,
-    });
+
+var VIDEO_URL = &#34;../../media/paypal.hevc&#34;;
+
+var player = null;
+
+window.onload = function() {
+    var video = document.getElementById(&#34;hevc-display&#34;);
+    var status = document.getElementById(&#34;status&#34;);
+
+    var playback = function(event) {
+        event.preventDefault();
+        if (player) {
+            player.stop();
+        }
+
+        player = new libde265.RawPlayer(video);
+        player.set_status_callback(function(msg, fps) {
+            switch (msg) {
+            case &#34;loading&#34;:
+                status.innerHTML = &#34;Loading movie...&#34;;
+                break;
+            case &#34;initializing&#34;:
+                status.innerHTML = &#34;Initializing...&#34;;
+                break;
+            case &#34;playing&#34;:
+                status.innerHTML = &#34;Playing...&#34;;
+                break;
+            case &#34;stopped&#34;:
+                status.innerHTML = &#34;&#34;;
+                break;
+            case &#34;fps&#34;:
+                status.innerHTML = Number(fps).toFixed(2) + &#34; fps&#34;;
+                break;
+            default:
+                status.innerHTML = msg;
+            }
+        });
+        player.playback(VIDEO_URL);
+    };
+
+    var button = document.getElementById(&#34;play-hevc&#34;);
+    if (button.addEventListener) {
+        button.addEventListener(&#34;click&#34;, playback, false);
+    } else if (button.attachEvent){
+        button.attachEvent(&#39;onclick&#39;, playback);
+    }
+};
+
 &lt;/script&gt;
 
-&lt;p&gt;The shortcodes and calling are similar too.&lt;/p&gt;
+&lt;p&gt;Note that the original clip is a 02:29.14 long 720p (1280x720) H.264 video with file size as large as 28.8MB. I resized and encoded the HEVC clip to 01:00.00 long 360p (640x360), and the file is only 2.4MB. A H.264 video with the same duration and resolution will require up to 10MB. What a save! That&amp;rsquo;s why I can upload it to my site without any concern.&lt;/p&gt;
 
-&lt;p&gt;To compare, &lt;em&gt;px-video.js&lt;/em&gt; requires additional initialization script and did not comes with beautiful website and designing tools, which gives &lt;em&gt;video.js&lt;/em&gt; a head lead for now.&lt;/p&gt;
+&lt;p&gt;But the downside is obvious too: it is not well supported. The HTML5 player can not play it yet. The js decoder in the above example lacks further control (at least sync to play in normal speed) and can not play sound (both you might already notice). So there&amp;rsquo;s a long way to go.&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_3&#34;&gt;TODO&lt;/h3&gt;
+&lt;h2 id=&#34;toc_6&#34;&gt;Look Ahead&lt;/h2&gt;
 
-&lt;p&gt;The subtitle (&lt;a href=&#34;http://dev.w3.org/html5/webvtt/&#34;&gt;.vtt&lt;/a&gt; format) now suffers the &lt;a href=&#34;http://en.wikipedia.org/wiki/Same-origin_policy&#34;&gt;&lt;em&gt;same origin policy&lt;/em&gt;&lt;/a&gt; problem, so I have to save it locally before going deep into &lt;a href=&#34;http://enable-cors.org&#34;&gt;CORS&lt;/a&gt; support.&lt;/p&gt;
-
-&lt;p&gt;In the shortcodes, the height and width can also be specified. And I would definitely try to access and play with the images from the video content.&lt;/p&gt;
+&lt;p&gt;Anyway, the staffs I show above are the two most promising technology I recall when talking about videos. If you are not a developer nor in related industries, you may consider it a sip into some new juices. Hope you will think of these when you watch a 4K/8K movie through a browser in the future.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>About this space</title>
+      <title>What &amp; why</title>
       <link>http://shevaxu.github.io/post/about/</link>
       <pubDate>Sat, 13 Dec 2014 16:46:18 CST</pubDate>
       <author>Sheva Xu</author>
       <guid>http://shevaxu.github.io/post/about/</guid>
-      <description>
+      <description>&lt;p&gt;Hello world!&lt;/p&gt;
 
-&lt;p&gt;As a programmer, &lt;em&gt;Hello world!&lt;/em&gt; is the most familiar way to start a new advanture.&lt;/p&gt;
+&lt;p&gt;This post should be the first piece of content of my site. But I decide to rewrite it from the ground because I realize I had not figured out what the site was about at that time.&lt;/p&gt;
 
-&lt;p&gt;So, since it&amp;rsquo;s my first ever blog, or more precisely a space, I would like to state what I expect from building it.&lt;/p&gt;
+&lt;p&gt;I was not intend to write blogs then. All I wanted was a place to experiment HTML/CSS/Javascript following my sudden interest in front-end development. But then I read the blog &lt;a href=&#34;http://www.shubhro.com/2014/12/27/software-engineers-should-write/&#34;&gt;&lt;em&gt;Software engineers should write&lt;/em&gt;&lt;/a&gt; and it did motivate me. Anyway, a clear thought is required to write codes as well as blogs and I should keep practicing it. (I understand this more profoundly after my first technical post, that&amp;rsquo;s another reason I rewrite this post.)&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_0&#34;&gt;A notebook online&lt;/h3&gt;
+&lt;p&gt;So this is a blog?&lt;/p&gt;
 
-&lt;p&gt;My first thought about the blog is a notebook for IT related material, to share knowledge. That&amp;rsquo;s what I usually get from other IT guys&amp;rsquo; blogs. But then I found out I am not good at writing explanations and I have &lt;em&gt;Evernote&lt;/em&gt; &amp;hellip;&lt;/p&gt;
+&lt;p&gt;Well, I plan to make it more than a blog, but for now it appears to be just a set of posts (and nobody reads them). However, I try to make each single piece of them as interactive as possible. During the last few years, I get used to learn from online tutorials and &lt;em&gt;dynamic&lt;/em&gt; books (e.g., the latest &lt;a href=&#34;http://neuralnetworksanddeeplearning.com&#34;&gt;&lt;em&gt;Neural network and deep learning&lt;/em&gt;&lt;/a&gt;) instead of static materails. I think it is a much more comprehensive way to share knowledges, especially for IT related topics.&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_1&#34;&gt;A web playground&lt;/h3&gt;
+&lt;p&gt;I have spent weeks to explore and weight the options for building my site, and finally chose &lt;em&gt;Github&lt;/em&gt; as the host and &lt;a href=&#34;http://gohugo.io/&#34;&gt;&lt;em&gt;Hugo&lt;/em&gt;&lt;/a&gt; as the generator. Why? Github is &lt;em&gt;free&lt;/em&gt; and simply great, and &lt;em&gt;Hugo&lt;/em&gt; is really &amp;ldquo;A fast &amp;amp; modern static website engine&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;I began to learn more advanced web-tech a few months ago and were looking for a project to keep practising the aquired skills. I had tried making things &lt;em&gt;localhost&lt;/em&gt; but it would always be of more motivations if the thing you build can deploy online and show (off) to others. Then I really took some times to find a way to host a site for free where I can build (almost) anything at will &amp;hellip;&lt;/p&gt;
+&lt;p&gt;The problem left is that they are both static &amp;ndash; it is not saying the pages are not dynamic, but the site can be think of a pure front-end (bunch of HTMLs). The host (Github) is just a blackboard that provides no back-end interaction (database update). It bothered me for a while but then I realized it doesn&amp;rsquo;t matter (and it can be walked around like the embedded &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt; commenting system, if it&amp;rsquo;s important to you).&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_2&#34;&gt;When I met Hugo&lt;/h3&gt;
+&lt;p&gt;That&amp;rsquo;s all in brief. Now the journey has begun, keep going!&lt;/p&gt;
 
-&lt;p&gt;I have used Github over a year and &lt;em&gt;Github pages&lt;/em&gt; was my first option. It&amp;rsquo;s powered by &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; and somehow I found it not attractive enough. I dropped my space building for a while until I found &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; by accident (I was looking for a solution for &lt;a href=&#34;http://gohugo.io/tutorials/mathjax/&#34;&gt;using MathJax in Markdown&lt;/a&gt;). Then I found &lt;em&gt;Hugo&lt;/em&gt; is a lovely name, with everything configurable and well documented. So, why not give it a shot?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Por los momentos difíciles, ya entendí que la flor más bella sería siempre para mi.&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_3&#34;&gt;Suit up&lt;/h3&gt;
-
-&lt;p&gt;For me, tools always come before builds. I would love to list my weapons below:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Markdown&lt;/em&gt;: I used &lt;a href=&#34;http://macdown.uranusjr.com/&#34;&gt;MacDown&lt;/a&gt; for all my .md file editing since I found it, very impressive real-time preview;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;JavaScripts/html/css&lt;/em&gt;: I am still hesitating between &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt; and &lt;a href=&#34;http://dcloud.io/&#34;&gt;HBuilder&lt;/a&gt;. Only time can tell who&amp;rsquo;s the winner &amp;hellip;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Version control&lt;/em&gt;: Git and Github, no doubt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Debug&lt;/em&gt;: chrome&amp;rsquo;s DevTools is good enough and I&amp;rsquo;m just the beginner about it (&lt;a href=&#34;http://discover-devtools.codeschool.com/&#34;&gt;here&lt;/a&gt; is the course I found about it).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;toc_4&#34;&gt;Talk less, code more&lt;/h3&gt;
-
-&lt;p&gt;I know there should be a long time before anybody else reading my own blog and playing my toy apps. So I would keep my voice down and try to make my codes speak themselves.&lt;/p&gt;
-
-&lt;p&gt;And lastly, forgive my poor English, I don&amp;rsquo;t want to waste time double checking my grammar and spell any more. After all, the only sentence I guarantee perfectly right is &lt;em&gt;Hello world!&lt;/em&gt; :)&lt;/p&gt;
+&lt;p&gt;&amp;ndash; Lydia, by F.I.R.&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     

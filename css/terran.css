@@ -1,13 +1,11 @@
 /*!
  * CSS file of the Terran-X theme 
- * inspired by Clean Blog v1.0.0 (http://startbootstrap.com)
- * Must be linked after clean-blog.min.css to effect
+ * Inspired by and based on Clean Blog v1.0.0 (http://startbootstrap.com)
+ * Must be linked after clean-blog.min.css to take effect
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-body {
-	background-color: #D2E4B4;
-}
+body { background-color: #D2E4B4; }
 
 a img:hover,
 a img:focus {
@@ -20,15 +18,14 @@ a img:focus {
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-position: center center;
-	opacity: 0.5;
+	opacity: .5;
 	z-index: -1;
 }
 
-body::before {
+.fixed-img-bg {
 	position: fixed;
 	content: "";
-	background: url('../img/bg.png');
-	opacity: 0.05;
+	opacity: .05;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -44,37 +41,86 @@ body::before {
 
 hr {
 	border-width: 2px;
-  border-color: inherit;
+	border-color: inherit;
 }
 
 @media only screen and (min-width: 768px) {
 	.intro-header .post-heading,
 	.intro-header .page-heading {
 		padding: 100px 0 50px 0;
-	}	
+	}
 }
 
 .intro-header .post-heading .meta .label {
 	background-color: #fff;
 	color: #313131;
-	padding: 0.1em 0.3em;
-	margin: 0 0.1em;
+	padding: .1em .3em;
+	margin: 0 .1em;
 }
 
 .intro-header .post-heading .meta .label:hover,
 .intro-header .post-heading .meta .label:focus {
-  background-color: #F7ECB5;
+	background-color: #F7ECB5;
 }
 
-.label-summary {
-	background-color: #404040;
-}
+.label-summary { background-color: #404040; }
 
 .label-summary:hover,
 .label-summary:focus {
-  background-color: #0085a1;
+	background-color: #0085a1;
 }
 
-.post-preview > .post-meta {
-  margin-top: 10px;
+.post-preview > .post-meta { margin-top: 10px; }
+
+.back-to-top {
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	text-decoration: none;	
+	font-size: 12px;
+	padding: 1em;
+	display: none;
+	cursor: pointer;
 }
+
+blockquote {
+	display: block;
+	background: #eee;
+	padding: 1em 1em .5em 3em;
+	margin-bottom: 1em;
+	position: relative;
+	font-family: Georgia, serif;
+	color: #333;
+	text-align: justify;
+	border-left: 1em solid #0085a1;
+	border-right: .2em solid #0085a1;
+}
+
+blockquote::before {
+	content: "\201C";
+	font-family: Georgia, serif;
+	font-size: 400%;
+	font-weight: bold;
+	color: #999;
+	position: absolute;
+	left: .1em;
+	top: 0;
+}
+
+blockquote p { margin-top: 0.5em; }
+article li a { text-decoration: underline; }
+
+h1,
+.post-preview h2,
+.subheading {
+	text-transform: capitalize;
+}
+
+@media only screen and (min-width: 768px) {
+	.intro-header .site-heading .subheading,
+	.intro-header .page-heading .subheading {
+		font-size: 36px;
+	}
+}
+
+nav li i { margin-right: 5px; }
