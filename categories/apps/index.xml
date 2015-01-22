@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Apps on Space of Sheva </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://ShevaXu.github.io/categories/apps/index.xml/</link>
+    <language>en-us</language>
+    <author>Sheva Xu</author>
+    
+    <updated>Sat, 17 Jan 2015 16:28:36 CST</updated>
+    
+    <item>
+      <title>Having fun with maps</title>
+      <link>http://shevaxu.github.io/post/funmaps/</link>
+      <pubDate>Sat, 17 Jan 2015 16:28:36 CST</pubDate>
+      <author>Sheva Xu</author>
+      <guid>http://shevaxu.github.io/post/funmaps/</guid>
+      <description>
+
+&lt;p&gt;I like travel.&lt;/p&gt;
+
+&lt;p&gt;I always wanted an app to help me memorize all the extradinary experiences in every journey. There are plenty of travalling apps on the web but none of them match my imagination so far (yeah, I&amp;rsquo;m that picky). So why not develop one myself?&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It is good to have an end to journey toward; but it is the journey that matters, in the end.&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; Ernest Hemingway&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_0&#34;&gt;D3.js &amp;amp; My Footprint Map&lt;/h2&gt;
+
+&lt;p&gt;The first thing I tried was &lt;a href=&#34;http://d3js.org/&#34;&gt;&lt;em&gt;D3.js&lt;/em&gt;&lt;/a&gt;, which is for &lt;em&gt;Data-driven documents&lt;/em&gt;. Its capability is far beyond making a map, and I have just explored the very little part of it. Mastering such a comprehensive tool would require so much effort, and I&amp;rsquo;m glad that I began learning it with a certain project idea in mind that offered extra motivation. The map I was going to make is my footprint of provinces in China.&lt;/p&gt;
+
+&lt;p&gt;The idea came from an image I saw on &lt;a href=&#34;http://couchsurfing.org/&#34;&gt;&lt;em&gt;Couchsurfing&lt;/em&gt;&lt;/a&gt; for someone&amp;rsquo;s visited countires (like &lt;a href=&#34;http://traveltip.org/countries_visited.php&#34;&gt;this&lt;/a&gt;). I have not explored many countries yet so I wanted to make one for visited provinces in China. I found &lt;a href=&#34;http://blog.econst.org/2014/06/02/china-map-with-d3-js-and-geojson/&#34;&gt;one with similar idea&lt;/a&gt; but it possesses no interaction I desire (but it gave me inspiration and data).&lt;/p&gt;
+
+&lt;p&gt;My final map/app came out like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../../playground/footprint-map.html&#34; target=&#34;_blank&#34;&gt;
+&lt;img src=&#34;../../img/my-footprint.png&#34; width=100%&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;It visualizes both the provinces and cities borders;&lt;/li&gt;
+&lt;li&gt;you can pick your marking color for each provinces independently (according to your own logic);&lt;/li&gt;
+&lt;li&gt;you can save it to .png image.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can try making your own footprint map (by clicking the image or go to the &lt;em&gt;Playgournd&lt;/em&gt;) and share it. Below are the key steps/obstacles during my development that would help in case you want to customize your own map for another country or the world.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_1&#34;&gt;The magic of D3.js&lt;/h3&gt;
+
+&lt;p&gt;The data model confused me until I found the story of &lt;a href=&#34;http://bost.ocks.org/mike/circles/&#34;&gt;&lt;em&gt;Three Little Circle&lt;/em&gt;&lt;/a&gt; by Mike Bostock, one of the author of D3.js. He also wrote a detail post about &lt;a href=&#34;http://bost.ocks.org/mike/selection/&#34;&gt;&lt;em&gt;How Selections Work&lt;/em&gt;&lt;/a&gt; that I plan to take time reading/understanding in the future.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_2&#34;&gt;Data &amp;amp; TopoJSON&lt;/h3&gt;
+
+&lt;p&gt;The provinces/cities data I got was originally in &lt;a href=&#34;http://geojson.org/&#34;&gt;&lt;em&gt;GeoJSON&lt;/em&gt;&lt;/a&gt; format, a subset of &lt;a href=&#34;http://www.json.org/&#34;&gt;&lt;em&gt;JavaScript Object Notation&lt;/em&gt;&lt;/a&gt; for geographic data. I converted it to &lt;a href=&#34;https://github.com/mbostock/topojson/wiki&#34;&gt;&lt;em&gt;TopoJSON&lt;/em&gt;&lt;/a&gt; using &lt;a href=&#34;http://geojson.io/&#34;&gt;&lt;em&gt;geojson.io&lt;/em&gt;&lt;/a&gt; (it&amp;rsquo;s actually a great online map data editor), mainly for smaller file size and faster rendering (but it requires additional &lt;em&gt;topojson.js&lt;/em&gt; and GeoJSON is more widely supported).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;P.S.&lt;/em&gt; This project also help me pick up some geographic knowledge, e.g., the different map &lt;a href=&#34;http://techslides.com/demos/d3/d3-continents-projections.html&#34;&gt;projections&lt;/a&gt; (and &lt;em&gt;Mercator&lt;/em&gt; is the one I use).&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_3&#34;&gt;Colors &amp;amp; JSColor&lt;/h3&gt;
+
+&lt;p&gt;I give each province a &amp;ldquo;checked&amp;rdquo; attribute that filling the path with default color when off and filling with the color I choose when on. &lt;a href=&#34;http://jscolor.com/&#34;&gt;&lt;em&gt;JSColor&lt;/em&gt;&lt;/a&gt; is so handy as a color picker. After all, each color can be represented as a string like &lt;em&gt;&amp;rdquo;#fff&amp;rdquo;&lt;/em&gt; or &lt;em&gt;&amp;rdquo;#D2E4B4&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_4&#34;&gt;Image &amp;amp; SaveSvgAsPng&lt;/h3&gt;
+
+&lt;p&gt;It took me few days to figure out how to save the rendered svg (that&amp;rsquo;s what D3.js draws for geo-paths) to image, which is important for a closure since I don&amp;rsquo;t want to &lt;em&gt;screenshot my work&lt;/em&gt;. Mike also wrote a post about &lt;a href=&#34;http://bl.ocks.org/biovisualize/8187844&#34;&gt;direct conversion on Chrome&lt;/a&gt; but I found &lt;a href=&#34;https://github.com/exupero/saveSvgAsPng&#34;&gt;saveSvgAsPng&lt;/a&gt; more easy to use (and at least supports Safari as well). There&amp;rsquo;s a &lt;a href=&#34;http://spin.atomicobject.com/2014/01/21/convert-svg-to-png/&#34;&gt;blog post&lt;/a&gt; explains how it works (the key is to convert it to a data URL and go get it).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Leaflet&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

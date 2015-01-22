@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Footprint Map of China</title>
+
+		<style>
+			.map-feature {
+			  fill: #ccc;
+			  cursor: pointer;
+			  stroke-width: 2;
+			  stroke: #fff;
+			  stroke-linecap: round;
+			  stroke-linejoin: round;
+			  cursor: pointer;
+			}		
+			.mesh-inner {
+			  fill: none;
+			  stroke-width: 1;
+			  stroke: #ddd;
+			  stroke-linecap: round;
+			  stroke-linejoin: round;
+			  cursor: pointer;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<div id="map-div"></div>
+		<p>Pick a color: <input class="color" onchange="changeClr('#'+this.color)"></p>		
+		<button onclick="saveAsPng()">Save as png</button>
+		
+		<!-- Javascript -->
+		<!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+		<!--<script src="http://d3js.org/topojson.v1.min.js"></script>-->
+		<script src="../../js/d3.v3.min.js"></script>
+		<script src="../../js/topojson.v1.min.js"></script>
+		<script src="../../js/queue.v1.min.js"></script>
+		<script src="../../js/saveSvgAsPng.js"></script>
+		<script src="../../js/jscolor/jscolor.js"></script>
+		<script src="../../js/demos/footprint.js"></script>
+	</body>
+
+</html>
