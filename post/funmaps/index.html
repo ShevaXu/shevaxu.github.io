@@ -12,7 +12,7 @@
 		<meta name="keywords" content="hugo, blog, terran-x, playground, github">
    		<meta name="author" content="Sheva Xu">
 
-		<title>Having fun with maps</title>
+		<title>Fun with maps, part I</title>
 
 		
 		
@@ -91,12 +91,12 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<div class="post-heading">
-					<h1>Having fun with maps</h1> 
+					<h1>Fun with maps, part I</h1> 
 					
-					<h2 class="subheading">subtitle</h2> 
+					<h2 class="subheading">Basic introduction to D3.js and OSM</h2> 
 					
 					<span class="meta">
-						Jan 17, 2015  (Jan 17, 2015) 						 
+						Jan 17, 2015  (Jan 28, 2015) 						 
 						
 						&nbsp; &nbsp; 
 						<i class="fa fa-sitemap"></i>
@@ -107,7 +107,7 @@
 						&nbsp; &nbsp; 
 						<i class="fa fa-tags"></i>
 						
-						 <a class="label" href="http://shevaxu.github.io/tags/Maps">Maps</a>  <a class="label" href="http://shevaxu.github.io/tags/Visualization">Visualization</a>  <a class="label" href="http://shevaxu.github.io/tags/D3.js">D3.js</a> 
+						 <a class="label" href="http://shevaxu.github.io/tags/Maps">Maps</a>  <a class="label" href="http://shevaxu.github.io/tags/Visualization">Visualization</a>  <a class="label" href="http://shevaxu.github.io/tags/D3.js">D3.js</a>  <a class="label" href="http://shevaxu.github.io/tags/OSM">OSM</a> 
 						
 					</span>
 					
@@ -142,7 +142,7 @@
 <p>My final map/app came out like this:</p>
 
 <p><a href="../../playground/footprint-map.html" target="_blank">
-<img src="../../img/my-footprint.png" width=100%>
+<img src="../../img/posts/my-footprint.png" width=100%>
 </a></p>
 
 <ol>
@@ -167,11 +167,61 @@
 
 <p>I give each province a &ldquo;checked&rdquo; attribute that filling the path with default color when off and filling with the color I choose when on. <a href="http://jscolor.com/"><em>JSColor</em></a> is so handy as a color picker. After all, each color can be represented as a string like <em>&rdquo;#fff&rdquo;</em> or <em>&rdquo;#D2E4B4&rdquo;</em>.</p>
 
-<h3 id="toc_4">Image &amp; SaveSvgAsPng</h3>
+<h3 id="toc_4">Images &amp; SaveSvgAsPng</h3>
 
 <p>It took me few days to figure out how to save the rendered svg (that&rsquo;s what D3.js draws for geo-paths) to image, which is important for a closure since I don&rsquo;t want to <em>screenshot my work</em>. Mike also wrote a post about <a href="http://bl.ocks.org/biovisualize/8187844">direct conversion on Chrome</a> but I found <a href="https://github.com/exupero/saveSvgAsPng">saveSvgAsPng</a> more easy to use (and at least supports Safari as well). There&rsquo;s a <a href="http://spin.atomicobject.com/2014/01/21/convert-svg-to-png/">blog post</a> explains how it works (the key is to convert it to a data URL and go get it).</p>
 
-<h2 id="toc_5">Leaflet</h2>
+<h2 id="toc_5">More About Maps</h2>
+
+<p>D3.js is good at illustrating many kinds of data and statistics, but it&rsquo;s not designed for maps. Frankly speaking, what it does is just visualizing the a bunch of shapes (and treat them as paths), which is a simple form of the <a href="http://en.wikipedia.org/wiki/Vector_map"><em>vector map</em></a>. But that&rsquo;s not the map you used to see.</p>
+
+<p>Actually, <a href="http://en.wikipedia.org/wiki/Tiled_web_map"><em>tiled map</em></a> is the most popular way to display and navigate maps so far. To be more specific, it is the <em>raster tiled web map</em>, which delivers rendered images (usually PNGs) of adjacent tiles from a server to your browser that seamlessly joins them. You might already seen the tiled effect loading a map when the network is slow.</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tiled_web_map_Stevage.png/800px-Tiled_web_map_Stevage.png" alt="" />
+</p>
+
+<p>(Image from Wikipedia)</p>
+
+<p>Another emerging method for dilivering styled web maps is <a href="http://en.wikipedia.org/wiki/Vector_tiles"><em>vector tiles</em></a> (a.k.a. vectiles), which is more of a hybrid of vector map and tiled map. It reduces data transfer greatly by making the client do the rastering.</p>
+
+<p>During these days&rsquo; study of web maps, I&rsquo;d like to view it as two major components: the data/service and the client. As a case of the vector map, the <em>footprint map</em> uses TopoJSON as data (local service) and D3.js as client. For tiled map, <em>Google Maps</em> has provided both data/service and client (API). Buth there are other players in the game, and I will introduce them shortly.</p>
+
+<h3 id="toc_6">Misc</h3>
+
+<ul>
+<li><a href="http://www.mapshaper.org/">mapshaper</a>: <em>line simplification</em> tool of vector map for smaller file size and easier zooming, see this <a href="http://bost.ocks.org/mike/simplify/">article</a> for explanation;</li>
+<li>For other kinds of web maps, read the <a href="http://en.wikipedia.org/wiki/Web_mapping"><em>wiki page</em></a></li>
+<li>From <a href="http://www.naturalearthdata.com/"><em>Natural Earth</em></a> you can acquire &ldquo;free vector and raster map data at 1:10m, 1:50m, and 1:110m scales
+&ldquo;.</li>
+</ul>
+
+<h2 id="toc_7">OpenStreetMap - The Data</h2>
+
+<p><a href="https://www.openstreetmap.org"><em>OpenStreetMap (OSM)</em></a> might be the strongest competitor of Google Maps. The main difference is that the map data is collected by the people on the ground, like a Wikipedia of map, which means you can &ldquo;take back control of your map&rdquo;. That&rsquo;s why it&rsquo;s &ldquo;rich and detailed&rdquo;, and always up-to-date (the <a href="http://planet.openstreetmap.org/">whole data</a> updates every week for, and it&rsquo;s now over 40GB of it).
+If you are still not convinced by those pros, <a href="http://switch2osm.org/"><em>Switch2OSM</em></a> will explain to you &ldquo;from first principles to technical how-tos&rdquo;.</p>
+
+<p>But how those tiled web maps work? First let&rsquo;s see those conventions they follow:</p>
+
+<ul>
+<li>Tiles are 256x256 PNG images;</li>
+<li>The outer most zoom level 0 convers the entire world under <em>Mercator</em> projection;</li>
+<li>A single tile is replaced by 4 tiles when zooming in;</li>
+<li>The Z-X-Y scheme is used for accessing tiles through REST API.</li>
+</ul>
+
+<p>To give an example, here&rsquo;s the <em>first</em> tile of OSM - <code>http://tile.osm.org/0/0/0.png</code>:</p>
+
+<p><a href="../../playground/osm-tiles.html" target="_blank">
+<img src="../../img/posts/000.png">
+</a></p>
+
+<p>Cool, it&rsquo;s the whole world (well, actually not all of it as the latitude is limited to around 85 degrees). I have made a simple map client using the OSM data in the <em>Playground</em> (click the image also directs you there). This toy provides blunt interactions for navigating to any place you want theoritically, up to the max-allowed zoom level (don&rsquo;t try keeping zoom in, as I have not tested the max yet and it will crash :P).</p>
+
+<p>But if you want to build real apps upon it, keep in mind that the data and the service (or server) is not the same in this case, since OSM focus on letting people contribute the data and sharing them (that&rsquo;s already great enough for a non-profit group, see the <a href="http://wiki.openstreetmap.org/wiki/Tile_usage_policy"><em>usage policy</em></a> for more details).</p>
+
+<p>Luckily, we don&rsquo;t have to worry about serving the data since there are other groups just do it, some are combined with the client. So, next!</p>
+
+<p>Waiting for part II :)</p>
 
 			</div>
 		</div>
