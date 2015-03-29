@@ -7,7 +7,264 @@
     <language>en-us</language>
     <author>Sheva Xu</author>
     
-    <updated>Sat, 17 Jan 2015 16:28:36 CST</updated>
+    <updated>Tue, 10 Feb 2015 12:17:18 CST</updated>
+    
+    <item>
+      <title>Data Visualization &amp; D3</title>
+      <link>http://shevaxu.github.io/post/data-viz-notes/</link>
+      <pubDate>Tue, 10 Feb 2015 12:17:18 CST</pubDate>
+      <author>Sheva Xu</author>
+      <guid>http://shevaxu.github.io/post/data-viz-notes/</guid>
+      <description>
+
+&lt;p&gt;I found myself more and more into data visualization recently. So I decided to take an online course to study it more systematically. Since &lt;em&gt;Coursera&lt;/em&gt; (my first choice) did not offer one that suits my need, I am lucky to find &lt;a href=&#34;https://www.udacity.com/wiki/ud507&#34;&gt;this course&lt;/a&gt; immediately on Udacity.&lt;/p&gt;
+
+&lt;p&gt;I believe that taking notes is a good way to participate in the course (do the assignments and disuss in the forum are better), to master the material and get back to those in need later more efficiently. Since the course is online, I&amp;rsquo;d love to put these notes on the web too, and would be happy if sharing do any help to others.&lt;/p&gt;
+
+&lt;p&gt;The initial notes were organized by the lectures presenting order. But then I decided to divide them into the design/concept part and the coding part, to make it easy to take what you want.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_0&#34;&gt;Design &amp;amp; Concept&lt;/h2&gt;
+
+&lt;p&gt;This part spans mainly from lesson 1 to 3.&lt;/p&gt;
+
+&lt;p&gt;I spent one day (2015-2-10) finishing the videos of &lt;em&gt;1a Data Visualization&lt;/em&gt;, read some helpful articles and played with some examples :)
+Then the process got slower &amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_1&#34;&gt;Data types:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quantitative: exact numbers, e.g., 0, 1, 2&lt;/li&gt;
+&lt;li&gt;Ordered: anything that can be compared&lt;/li&gt;
+&lt;li&gt;Categorical/nominal: anything else&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;According to the above definition, a quantization/histogram should be of &lt;em&gt;Ordered&lt;/em&gt; type. But intuitively I&amp;rsquo;d like to consider it &lt;em&gt;Quantitative&lt;/em&gt;. And what about continuous/discrete number? Well, does it really matter?&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_2&#34;&gt;Visual encoding&lt;/h3&gt;
+
+&lt;p&gt;The ranking of visual encodings (from more to less accurate):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;position &amp;gt; length &amp;gt; angle/slope &amp;gt; area &amp;gt; volume &amp;gt; color/density&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I think it&amp;rsquo;s just for quantitative and ordered data. For nominal ones, it is how distinguishable that matters (leave alone themes and styles), and I recommend the below ranking:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;color hue &amp;gt; shape &amp;gt; texture &amp;gt; text&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_3&#34;&gt;10 things you can learn from the New York Times&amp;rsquo; data viz&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clarity of context and purpose&lt;/li&gt;
+&lt;li&gt;respect for the reader&lt;/li&gt;
+&lt;li&gt;editorial rigor and integration&lt;/li&gt;
+&lt;li&gt;clarity of questions&lt;/li&gt;
+&lt;li&gt;data research and preparation&lt;/li&gt;
+&lt;li&gt;visual restraint&lt;/li&gt;
+&lt;li&gt;layout and placement&lt;/li&gt;
+&lt;li&gt;diversity of techniques&lt;/li&gt;
+&lt;li&gt;technical execution&lt;/li&gt;
+&lt;li&gt;annotation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://blog.visual.ly/10-things-you-can-learn-from-the-new-york-times-data-visualizations/&#34;&gt;article&lt;/a&gt; from &lt;em&gt;Visual.ly&lt;/em&gt;. To bad I can&amp;rsquo;t access to &lt;em&gt;nytimes&lt;/em&gt; and its vizs for now. (One of the creater of D3, &lt;a href=&#34;http://bost.ocks.org/mike/&#34;&gt;Mike&lt;/a&gt;, works for NYT is I remember right.)&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_4&#34;&gt;Design Principles (2a)&lt;/h3&gt;
+
+&lt;p&gt;“The data visualization is for conveying something to others.”&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Choropleth_map&#34;&gt;&lt;strong&gt;Choropleth&lt;/strong&gt;&lt;/a&gt; = geographic + color (the fraction of Australians that identified as Anglican at the 2011 census, from wikipedia)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Australian_Census_2011_demographic_map_-_Australia_by_SLA_-_BCP_field_2715_Christianity_Anglican_Persons.svg/560px-Australian_Census_2011_demographic_map_-_Australia_by_SLA_-_BCP_field_2715_Christianity_Anglican_Persons.svg.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Cartogram&#34;&gt;&lt;strong&gt;Cartogram&lt;/strong&gt;&lt;/a&gt; = geographic + size (Germany, with the states and districts resized according to population, from wikipedia, a little bizarre though)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload.wikimedia.org/wikipedia/commons/3/30/Germany-population-cartogram.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pre-attentive processing&lt;/strong&gt;: takes 200~250ms, has 4 attributes: color, movement, form, space position&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Negative space&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Rubin2.jpg/400px-Rubin2.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Tips for &lt;strong&gt;Color&lt;/strong&gt; (more details in &lt;a href=&#34;http://www.perceptualedge.com/articles/visual_business_intelligence/rules_for_using_color.pdf&#34;&gt;&lt;em&gt;rules for using color&lt;/em&gt;&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;start with black and white (to see if color is redundant)&lt;/li&gt;
+&lt;li&gt;use medium hues or pastels (avoid bright colors)&lt;/li&gt;
+&lt;li&gt;use color to &lt;em&gt;highlight&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;respect readers (color blind)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;General rules&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;simple visualizations are generally better&lt;/li&gt;
+&lt;li&gt;less is more: avoid chartjunk&lt;/li&gt;
+&lt;li&gt;data-ink ratio as high as possible&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_5&#34;&gt;Narrative Structures&lt;/h3&gt;
+
+&lt;p&gt;For &lt;em&gt;Traditional Journalism&lt;/em&gt;, it&amp;rsquo;s &amp;ldquo;data around &lt;em&gt;narrative&lt;/em&gt;&amp;rdquo;; but now for &lt;em&gt;Data Journalisim&lt;/em&gt;, it&amp;rsquo;s &amp;ldquo;narrative around &lt;em&gt;data&lt;/em&gt;&amp;rdquo;.
+There are 3 kinds of structures:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Author-driven: strong ordering, heavy messaging, need for clarity and speed&lt;/li&gt;
+&lt;li&gt;Viewer-driven: ask questions, explore, tell your own data story&lt;/li&gt;
+&lt;li&gt;Martini glass: combined, start with single path, explore different path then&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_6&#34;&gt;Enhancements 1 - Geographic&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Map data&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;shapefile: binary, special software needed, storage limitations&lt;/li&gt;
+&lt;li&gt;GeoJSON: valid JSON (can be parsed by most progamming languages), human readable, more verbose&lt;/li&gt;
+&lt;li&gt;TopoJSON: An extension to GeoJSON that encodes topology, mainly for D3 (developed by the same anthor, will explain more in later posts)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Projection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s no perfect projection from 3 dimensions (the globe) to 2 dimensions (the map)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mercator: strech area near poles, preserve equatorial representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Graduated Symbol Maps&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A form of thematic mapping, a special case of &lt;a href=&#34;http://indiemapper.com/app/learnmore.php?l=proportional_symbols&#34;&gt;&lt;em&gt;proportional symbol maps&lt;/em&gt;&lt;/a&gt;. Also on Mike&amp;rsquo;s &lt;a href=&#34;http://bost.ocks.org/mike/bubble-map/&#34;&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_7&#34;&gt;Useful links:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.targetprocess.com/articles/visual-encoding.html&#34;&gt;Visual encoding&lt;/a&gt; offers the missing syllabus with sports related real examples analysis&lt;/li&gt;
+&lt;li&gt;The &lt;em&gt;chart chooser&lt;/em&gt; image link fails now, here&amp;rsquo;s the &lt;a href=&#34;http://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf&#34;&gt;pdf&lt;/a&gt; (and there&amp;rsquo;s also a &lt;em&gt;slide chooser&lt;/em&gt; in the latest &lt;a href=&#34;http://extremepresentation.typepad.com/blog/2015/01/announcing-the-slide-chooser.html&#34;&gt;post&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://queue.acm.org/detail.cfm?id=1805128&#34;&gt;A Tour through the Visualization Zoo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Perceptual Edge &lt;a href=&#34;http://www.perceptualedge.com/&#34;&gt;blogs&lt;/a&gt;, where many lecture notes come&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://colorbrewer2.org/&#34;&gt;Color brewer&lt;/a&gt;, the online tool for picking colors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://graphicdesign.spokanefalls.edu/tutorials/process/gestaltprinciples/gestaltprinc.htm&#34;&gt;The Gestalt Principles&lt;/a&gt; - psychology of visual perception&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://vita.had.co.nz/papers/layered-grammar.html&#34;&gt;A layered grammar of graphics&lt;/a&gt; and &lt;a href=&#34;http://www.science-craft.com/2014/07/08/introducing-the-grammar-of-graphics-plotting-concept/&#34;&gt;plotting concept&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Other sites for good vizs (from the forum): &lt;a href=&#34;http://infosthetics.com/&#34;&gt;information aesthetiecs&lt;/a&gt;, &lt;a href=&#34;http://flowingdata.com/&#34;&gt;flowing data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_8&#34;&gt;Examples:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The very impressive example in the lecture, from &lt;a href=&#34;http://www.gapminder.org/&#34;&gt;Gapminder&lt;/a&gt;, &amp;ldquo;a fact-based worldview&amp;rdquo; (and there are more on the site).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://upload.wikimedia.org/wikipedia/commons/2/27/Snow-cholera-map-1.jpg&#34;&gt;John Snow&amp;rsquo;s Cholera Map&lt;/a&gt; and the &lt;a href=&#34;http://www.ph.ucla.edu/epi/snow/snowcricketarticle.html&#34;&gt;story&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.theguardian.com/world/ng-interactive/2014/may/-sp-gay-rights-world-lesbian-bisexual-transgender&#34;&gt;Lesbian, gay, bisexual and transgender rights around the world&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Remove chartjunk &lt;a href=&#34;http://darkhorseanalytics.com/blog/wp-content/uploads/2013/08/data-ink.gif&#34;&gt;gif&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&#34;http://www.oecdregionalwellbeing.org/&#34;&gt;OECD&lt;/a&gt; has interesting data about well-beings with awesome viz&lt;/li&gt;
+&lt;li&gt;An awesome example of personal data viz &amp;ndash; &lt;a href=&#34;http://aprilzero.com/&#34;&gt;aprilzero&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Insightful interaction &lt;a href=&#34;http://insightfulinteraction.com/&#34;&gt;maps &amp;amp; vizs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_9&#34;&gt;P1 Raw Visualization&lt;/h3&gt;
+
+&lt;p&gt;Since it&amp;rsquo;s a mini project for &amp;ldquo;raw&amp;rdquo; viz, I would like to try &lt;a href=&#34;http://app.raw.densitydesign.org/&#34;&gt;RAW&lt;/a&gt;, a totally no-coding online tool. I picked the &lt;em&gt;Music&lt;/em&gt; sample data first, and visualized it with &lt;em&gt;Streamgraph&lt;/em&gt;. Here&amp;rsquo;s what I got after some clicks and drags:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../img/posts/music-stream.svg&#34; alt=&#34;music-stream&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s both good and bad for automatic tool: you don&amp;rsquo;t need to do much, and you can&amp;rsquo;t do much (like adjusting the axes and text).&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;Movies&lt;/em&gt; dataset contains 26 records with 5 attributes: Movie (M), Genre (G), Production Budget (B), Total Domestic Box Office (T) and Rating IMDB &amp;reg;.&lt;/p&gt;
+
+&lt;p&gt;I finally chose the &lt;em&gt;Alluvial Diagram&lt;/em&gt; during my first attempt. I put &lt;em&gt;M -&amp;gt; B -&amp;gt; G -&amp;gt; R&lt;/em&gt; into &lt;em&gt;step&lt;/em&gt; and &lt;em&gt;T&lt;/em&gt; into &lt;em&gt;size&lt;/em&gt; (by which it is sorted), that&amp;rsquo;s what it looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../img/posts/movie-fineo.svg&#34; alt=&#34;movie-fineo-like&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;What I wanted to tell is how the Box office &amp;ldquo;flow&amp;rdquo; w.r.t. genre, budge, and the rating is strange as it&amp;rsquo;s both cause and result. This was inspired by the &lt;em&gt;slope graph&lt;/em&gt; in the lectures but it did not come out as expected without more advanced sorting control.&lt;/p&gt;
+
+&lt;p&gt;After visiting the forum, I soon realized it&amp;rsquo;s a not-so-good viz, scatter graph would be a better option with perfect-fit &lt;em&gt;X, Y, Size, Color, Label&lt;/em&gt; attributes. My initial thought of mapping was the same as posted in the forum: &lt;em&gt;X-&amp;gt;B, Y-&amp;gt;T, Size-&amp;gt;R, Color-&amp;gt;G, Label-&amp;gt;M&lt;/em&gt;. But then I decided to remix it to tell a different story:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../img/posts/movie.svg&#34; alt=&#34;movie-scatter-remix&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;See, re-mapping &lt;em&gt;X-&amp;gt;T, Y-&amp;gt;R, Size-&amp;gt;B&lt;/em&gt; makes the whole planar the outcome of a movie &amp;ndash; the better review and more box office it got, the higher top-right it is placed, and the size shows the effort/money invested. I would argue it&amp;rsquo;s better in some senses :)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;NOTE&lt;/em&gt;: it is much smaller to save/embed a .svg file, and RAW allows you download the svg file directly! (&lt;a href=&#34;http://www.sitepoint.com/add-svg-to-web-page/&#34;&gt;How to add svg to web page?&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_10&#34;&gt;Critique&lt;/h3&gt;
+
+&lt;p&gt;See bad examples on &lt;a href=&#34;http://viz.wtf/&#34;&gt;bad viz&lt;/a&gt; for &lt;em&gt;kunk yard&lt;/em&gt; exercise.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Coding&lt;/h2&gt;
+
+&lt;p&gt;This part biases to my personal programming preference, as a progammer.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_12&#34;&gt;The viz tools pyramid&lt;/h3&gt;
+
+&lt;p&gt;The programming language &lt;em&gt;pyramid&lt;/em&gt; of data visualization (from bottom to top):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;assembly: webgl, canvas, svg;&lt;/li&gt;
+&lt;li&gt;c/c++: &lt;a href=&#34;http://d3js.org/&#34;&gt;D3.js&lt;/a&gt;, of course;&lt;/li&gt;
+&lt;li&gt;python/ruby: &lt;a href=&#34;http://dimplejs.org&#34;&gt;Dimple.js&lt;/a&gt; and &lt;a href=&#34;http://nvd3.org/&#34;&gt;NVD3&lt;/a&gt; for charts,  and &lt;a href=&#34;https://github.com/shutterstock/rickshaw&#34;&gt;Rickshaw&lt;/a&gt; for time series graphs, and &lt;a href=&#34;http://c3js.org/&#34;&gt;C3.js&lt;/a&gt; that I have used for dynamic charts;&lt;/li&gt;
+&lt;li&gt;Excel: &lt;a href=&#34;https://chartio.com/&#34;&gt;chartio&lt;/a&gt;, &lt;a href=&#34;http://raw.densitydesign.org/&#34;&gt;RAW&lt;/a&gt; and &lt;a href=&#34;https://datawrapper.de/&#34;&gt;Datawrapper&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;UPDATE&lt;/em&gt;: there&amp;rsquo;s much more higher level visualization tools worth having a look, to name a few, &lt;a href=&#34;http://visual.ly/&#34;&gt;visual.ly&lt;/a&gt; (full featured services) and &lt;a href=&#34;http://square.github.com/cubism/&#34;&gt;cubism&lt;/a&gt; (for time-series).&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_13&#34;&gt;10 rules for coding with D3&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://geography.wisc.edu/cartography/blog/10-rules-for-coding-with-d3/&#34;&gt;article&lt;/a&gt; is from the course&amp;rsquo;s additional reading.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Put each new method on its own indented line.&lt;/li&gt;
+&lt;li&gt;If your code breaks, look for a wayward semicolon.&lt;/li&gt;
+&lt;li&gt;The methods depend on how the operand was created.&lt;/li&gt;
+&lt;li&gt;Create only one new element (set) per block.&lt;/li&gt;
+&lt;li&gt;Assign each block to a logical variable.&lt;/li&gt;
+&lt;li&gt;Assign each new element a class name identical to the block name.&lt;/li&gt;
+&lt;li&gt;Always pass the block’s name as a class selector to the .selectAll method, even when creating an empty selection.&lt;/li&gt;
+&lt;li&gt;Assign static or default styles using a CSS stylesheet.&lt;/li&gt;
+&lt;li&gt;For dynamic inline style rules, use .style instead of .attr.&lt;/li&gt;
+&lt;li&gt;Make sure the data are the correct type (Number/String/Boolean) for the operations using them.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;toc_14&#34;&gt;Dimple.js&lt;/h3&gt;
+
+&lt;p&gt;Why dimple? Built on top of D3, easy to learn, and most uniquely, &lt;strong&gt;exposed to D3&lt;/strong&gt; (return D3 object).&lt;/p&gt;
+
+&lt;p&gt;But I skipped the Dimple.js lectures since I want to focus on D3 and Dimple is just &lt;em&gt;one&lt;/em&gt; of the advanced wrapper on top of D3. Maybe I will come back and re-visit Dimple later.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_15&#34;&gt;Chrome&amp;rsquo;s DevTools&lt;/h3&gt;
+
+&lt;p&gt;How to use chrome&amp;rsquo;s Javascript debugger (add a &lt;code&gt;debugger;&lt;/code&gt; line and the parsing will stop there) and print the data in a pretty way (use &lt;code&gt;console.table(data)&lt;/code&gt; in console, the data should not be too large though) is fresh to me. And I really love Chrome :)&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s another course about it on &lt;a href=&#34;http://discover-devtools.codeschool.com/&#34;&gt;codeschool&lt;/a&gt; I&amp;rsquo;d like to try.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_16&#34;&gt;The magic of D3&lt;/h3&gt;
+
+&lt;p&gt;Read throught these materials, you will get the beauty of D3.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://bost.ocks.org/mike/join/&#34;&gt;Thinking with joins&lt;/a&gt;, the basic&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bost.ocks.org/mike/selection/&#34;&gt;How selection works&lt;/a&gt;, understanding from implementation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/3808234&#34;&gt;General Update Pattern, III&lt;/a&gt;, animated &lt;em&gt;enter-update-exit&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_17&#34;&gt;Functions&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;d3.nest()&lt;/code&gt; is a group-then-aggregate function (like map-reduce), &lt;code&gt;.key()&lt;/code&gt; is for grouping and &lt;code&gt;.rollup()&lt;/code&gt; is for aggregating.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;UPDATE&lt;/em&gt;: more on D3 in the upcoming post &amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_18&#34;&gt;Final project&lt;/h3&gt;
+
+&lt;p&gt;Please wait for the final project coming out :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Fun with maps, part I</title>

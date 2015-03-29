@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="The blog/playground for personal amusement">
+		<meta name="keywords" content="hugo, blog, terran-x, playground, github">
+   		<meta name="author" content="Sheva Xu">
+
+		<title>Data Visualization &amp; D3</title>
+
+		
+		
+		
+		
+		<link href="http://shevaxu.github.io/css/bootstrap.min.css" rel="stylesheet">
+		
+		
+		<link href="//vjs.zencdn.net/4.11/video-js.css" rel="stylesheet">
+		
+		
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		
+		
+		
+		
+		<link href="http://shevaxu.github.io/css/github.css" rel="stylesheet"> 
+		
+		
+		
+		<link href="http://shevaxu.github.io/css/clean-blog.min.css" rel="stylesheet">	
+		
+		<link href="http://shevaxu.github.io/css/terran.css" rel="stylesheet">
+		
+		
+		<link href="http://shevaxu.github.io/img/favicon.png" rel="icon">
+	</head>
+
+	<body>
+		
+		<div class="fixed-img-bg" style="background: url('http://shevaxu.github.io/img/bg.jpg'); background-size: cover;"></div>
+		
+
+		
+		
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+	<div class="container-fluid">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Terran-X</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>					
+					<a href="http://shevaxu.github.io"><i class="fa fa-home"></i>Home</a>
+				</li>
+				<li>
+					<a href="http://shevaxu.github.io/post/"><i class="fa fa-file-text"></i>Posts</a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-futbol-o"></i>Playground</a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-paper-plane"></i>Tools</a>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<header class="intro-header" 
+	 style="background-image: url('http://shevaxu.github.io/img/post-bg.jpg')" >
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-heading">
+					<h1>Data Visualization &amp; D3</h1> 
+					
+					<h2 class="subheading">Notes for the class on Udacity</h2> 
+					
+					<span class="meta">
+						Feb 10, 2015  (Mar 29, 2015) 						 
+						
+						&nbsp; &nbsp; 
+						<i class="fa fa-sitemap"></i>
+						
+						 <a class="label" href="http://shevaxu.github.io/categories/Technology">Technology</a>  <a class="label" href="http://shevaxu.github.io/categories/Thoughts">Thoughts</a> 
+						
+						
+						&nbsp; &nbsp; 
+						<i class="fa fa-tags"></i>
+						
+						 <a class="label" href="http://shevaxu.github.io/tags/D3.js">D3.js</a>  <a class="label" href="http://shevaxu.github.io/tags/Visualization">Visualization</a>  <a class="label" href="http://shevaxu.github.io/tags/notes">notes</a> 
+						
+					</span>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				
+
+<p>I found myself more and more into data visualization recently. So I decided to take an online course to study it more systematically. Since <em>Coursera</em> (my first choice) did not offer one that suits my need, I am lucky to find <a href="https://www.udacity.com/wiki/ud507">this course</a> immediately on Udacity.</p>
+
+<p>I believe that taking notes is a good way to participate in the course (do the assignments and disuss in the forum are better), to master the material and get back to those in need later more efficiently. Since the course is online, I&rsquo;d love to put these notes on the web too, and would be happy if sharing do any help to others.</p>
+
+<p>The initial notes were organized by the lectures presenting order. But then I decided to divide them into the design/concept part and the coding part, to make it easy to take what you want.</p>
+
+<h2 id="toc_0">Design &amp; Concept</h2>
+
+<p>This part spans mainly from lesson 1 to 3.</p>
+
+<p>I spent one day (2015-2-10) finishing the videos of <em>1a Data Visualization</em>, read some helpful articles and played with some examples :)
+Then the process got slower &hellip;</p>
+
+<h3 id="toc_1">Data types:</h3>
+
+<ul>
+<li>Quantitative: exact numbers, e.g., 0, 1, 2</li>
+<li>Ordered: anything that can be compared</li>
+<li>Categorical/nominal: anything else</li>
+</ul>
+
+<p>According to the above definition, a quantization/histogram should be of <em>Ordered</em> type. But intuitively I&rsquo;d like to consider it <em>Quantitative</em>. And what about continuous/discrete number? Well, does it really matter?</p>
+
+<h3 id="toc_2">Visual encoding</h3>
+
+<p>The ranking of visual encodings (from more to less accurate):</p>
+
+<ul>
+<li>position &gt; length &gt; angle/slope &gt; area &gt; volume &gt; color/density</li>
+</ul>
+
+<p>I think it&rsquo;s just for quantitative and ordered data. For nominal ones, it is how distinguishable that matters (leave alone themes and styles), and I recommend the below ranking:</p>
+
+<ul>
+<li>color hue &gt; shape &gt; texture &gt; text</li>
+</ul>
+
+<h3 id="toc_3">10 things you can learn from the New York Times&rsquo; data viz</h3>
+
+<ul>
+<li>clarity of context and purpose</li>
+<li>respect for the reader</li>
+<li>editorial rigor and integration</li>
+<li>clarity of questions</li>
+<li>data research and preparation</li>
+<li>visual restraint</li>
+<li>layout and placement</li>
+<li>diversity of techniques</li>
+<li>technical execution</li>
+<li>annotation</li>
+</ul>
+
+<p>The <a href="http://blog.visual.ly/10-things-you-can-learn-from-the-new-york-times-data-visualizations/">article</a> from <em>Visual.ly</em>. To bad I can&rsquo;t access to <em>nytimes</em> and its vizs for now. (One of the creater of D3, <a href="http://bost.ocks.org/mike/">Mike</a>, works for NYT is I remember right.)</p>
+
+<h3 id="toc_4">Design Principles (2a)</h3>
+
+<p>“The data visualization is for conveying something to others.”</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Choropleth_map"><strong>Choropleth</strong></a> = geographic + color (the fraction of Australians that identified as Anglican at the 2011 census, from wikipedia)</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Australian_Census_2011_demographic_map_-_Australia_by_SLA_-_BCP_field_2715_Christianity_Anglican_Persons.svg/560px-Australian_Census_2011_demographic_map_-_Australia_by_SLA_-_BCP_field_2715_Christianity_Anglican_Persons.svg.png" alt="" />
+</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Cartogram"><strong>Cartogram</strong></a> = geographic + size (Germany, with the states and districts resized according to population, from wikipedia, a little bizarre though)</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/3/30/Germany-population-cartogram.png" alt="" />
+</p>
+
+<p><strong>Pre-attentive processing</strong>: takes 200~250ms, has 4 attributes: color, movement, form, space position</p>
+
+<p><strong>Negative space</strong></p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Rubin2.jpg/400px-Rubin2.jpg" alt="" />
+</p>
+
+<p>Tips for <strong>Color</strong> (more details in <a href="http://www.perceptualedge.com/articles/visual_business_intelligence/rules_for_using_color.pdf"><em>rules for using color</em></a>)</p>
+
+<ul>
+<li>start with black and white (to see if color is redundant)</li>
+<li>use medium hues or pastels (avoid bright colors)</li>
+<li>use color to <em>highlight</em></li>
+<li>respect readers (color blind)</li>
+</ul>
+
+<p><strong>General rules</strong></p>
+
+<ul>
+<li>simple visualizations are generally better</li>
+<li>less is more: avoid chartjunk</li>
+<li>data-ink ratio as high as possible</li>
+</ul>
+
+<h3 id="toc_5">Narrative Structures</h3>
+
+<p>For <em>Traditional Journalism</em>, it&rsquo;s &ldquo;data around <em>narrative</em>&rdquo;; but now for <em>Data Journalisim</em>, it&rsquo;s &ldquo;narrative around <em>data</em>&rdquo;.
+There are 3 kinds of structures:</p>
+
+<ul>
+<li>Author-driven: strong ordering, heavy messaging, need for clarity and speed</li>
+<li>Viewer-driven: ask questions, explore, tell your own data story</li>
+<li>Martini glass: combined, start with single path, explore different path then</li>
+</ul>
+
+<h3 id="toc_6">Enhancements 1 - Geographic</h3>
+
+<p><strong>Map data</strong></p>
+
+<ul>
+<li>shapefile: binary, special software needed, storage limitations</li>
+<li>GeoJSON: valid JSON (can be parsed by most progamming languages), human readable, more verbose</li>
+<li>TopoJSON: An extension to GeoJSON that encodes topology, mainly for D3 (developed by the same anthor, will explain more in later posts)</li>
+</ul>
+
+<p><strong>Projection</strong></p>
+
+<p>There&rsquo;s no perfect projection from 3 dimensions (the globe) to 2 dimensions (the map)</p>
+
+<ul>
+<li>Mercator: strech area near poles, preserve equatorial representation</li>
+</ul>
+
+<p><strong>Graduated Symbol Maps</strong></p>
+
+<p>A form of thematic mapping, a special case of <a href="http://indiemapper.com/app/learnmore.php?l=proportional_symbols"><em>proportional symbol maps</em></a>. Also on Mike&rsquo;s <a href="http://bost.ocks.org/mike/bubble-map/">tutorial</a>.</p>
+
+<h3 id="toc_7">Useful links:</h3>
+
+<ul>
+<li><a href="http://www.targetprocess.com/articles/visual-encoding.html">Visual encoding</a> offers the missing syllabus with sports related real examples analysis</li>
+<li>The <em>chart chooser</em> image link fails now, here&rsquo;s the <a href="http://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf">pdf</a> (and there&rsquo;s also a <em>slide chooser</em> in the latest <a href="http://extremepresentation.typepad.com/blog/2015/01/announcing-the-slide-chooser.html">post</a>)</li>
+<li><a href="http://queue.acm.org/detail.cfm?id=1805128">A Tour through the Visualization Zoo</a></li>
+<li>Perceptual Edge <a href="http://www.perceptualedge.com/">blogs</a>, where many lecture notes come</li>
+<li><a href="http://colorbrewer2.org/">Color brewer</a>, the online tool for picking colors</li>
+<li><a href="http://graphicdesign.spokanefalls.edu/tutorials/process/gestaltprinciples/gestaltprinc.htm">The Gestalt Principles</a> - psychology of visual perception</li>
+<li><a href="http://vita.had.co.nz/papers/layered-grammar.html">A layered grammar of graphics</a> and <a href="http://www.science-craft.com/2014/07/08/introducing-the-grammar-of-graphics-plotting-concept/">plotting concept</a></li>
+<li>Other sites for good vizs (from the forum): <a href="http://infosthetics.com/">information aesthetiecs</a>, <a href="http://flowingdata.com/">flowing data</a></li>
+</ul>
+
+<h3 id="toc_8">Examples:</h3>
+
+<ul>
+<li>The very impressive example in the lecture, from <a href="http://www.gapminder.org/">Gapminder</a>, &ldquo;a fact-based worldview&rdquo; (and there are more on the site).</li>
+<li><a href="http://upload.wikimedia.org/wikipedia/commons/2/27/Snow-cholera-map-1.jpg">John Snow&rsquo;s Cholera Map</a> and the <a href="http://www.ph.ucla.edu/epi/snow/snowcricketarticle.html">story</a></li>
+<li><a href="http://www.theguardian.com/world/ng-interactive/2014/may/-sp-gay-rights-world-lesbian-bisexual-transgender">Lesbian, gay, bisexual and transgender rights around the world</a></li>
+<li>Remove chartjunk <a href="http://darkhorseanalytics.com/blog/wp-content/uploads/2013/08/data-ink.gif">gif</a></li>
+<li>The <a href="http://www.oecdregionalwellbeing.org/">OECD</a> has interesting data about well-beings with awesome viz</li>
+<li>An awesome example of personal data viz &ndash; <a href="http://aprilzero.com/">aprilzero</a></li>
+<li>Insightful interaction <a href="http://insightfulinteraction.com/">maps &amp; vizs</a></li>
+</ul>
+
+<h3 id="toc_9">P1 Raw Visualization</h3>
+
+<p>Since it&rsquo;s a mini project for &ldquo;raw&rdquo; viz, I would like to try <a href="http://app.raw.densitydesign.org/">RAW</a>, a totally no-coding online tool. I picked the <em>Music</em> sample data first, and visualized it with <em>Streamgraph</em>. Here&rsquo;s what I got after some clicks and drags:</p>
+
+<p><img src="../../img/posts/music-stream.svg" alt="music-stream" />
+</p>
+
+<p>It&rsquo;s both good and bad for automatic tool: you don&rsquo;t need to do much, and you can&rsquo;t do much (like adjusting the axes and text).</p>
+
+<p>The <em>Movies</em> dataset contains 26 records with 5 attributes: Movie (M), Genre (G), Production Budget (B), Total Domestic Box Office (T) and Rating IMDB &reg;.</p>
+
+<p>I finally chose the <em>Alluvial Diagram</em> during my first attempt. I put <em>M -&gt; B -&gt; G -&gt; R</em> into <em>step</em> and <em>T</em> into <em>size</em> (by which it is sorted), that&rsquo;s what it looks like:</p>
+
+<p><img src="../../img/posts/movie-fineo.svg" alt="movie-fineo-like" />
+</p>
+
+<p>What I wanted to tell is how the Box office &ldquo;flow&rdquo; w.r.t. genre, budge, and the rating is strange as it&rsquo;s both cause and result. This was inspired by the <em>slope graph</em> in the lectures but it did not come out as expected without more advanced sorting control.</p>
+
+<p>After visiting the forum, I soon realized it&rsquo;s a not-so-good viz, scatter graph would be a better option with perfect-fit <em>X, Y, Size, Color, Label</em> attributes. My initial thought of mapping was the same as posted in the forum: <em>X-&gt;B, Y-&gt;T, Size-&gt;R, Color-&gt;G, Label-&gt;M</em>. But then I decided to remix it to tell a different story:</p>
+
+<p><img src="../../img/posts/movie.svg" alt="movie-scatter-remix" />
+</p>
+
+<p>See, re-mapping <em>X-&gt;T, Y-&gt;R, Size-&gt;B</em> makes the whole planar the outcome of a movie &ndash; the better review and more box office it got, the higher top-right it is placed, and the size shows the effort/money invested. I would argue it&rsquo;s better in some senses :)</p>
+
+<p><em>NOTE</em>: it is much smaller to save/embed a .svg file, and RAW allows you download the svg file directly! (<a href="http://www.sitepoint.com/add-svg-to-web-page/">How to add svg to web page?</a>)</p>
+
+<h3 id="toc_10">Critique</h3>
+
+<p>See bad examples on <a href="http://viz.wtf/">bad viz</a> for <em>kunk yard</em> exercise.</p>
+
+<h2 id="toc_11">Coding</h2>
+
+<p>This part biases to my personal programming preference, as a progammer.</p>
+
+<h3 id="toc_12">The viz tools pyramid</h3>
+
+<p>The programming language <em>pyramid</em> of data visualization (from bottom to top):</p>
+
+<ul>
+<li>assembly: webgl, canvas, svg;</li>
+<li>c/c++: <a href="http://d3js.org/">D3.js</a>, of course;</li>
+<li>python/ruby: <a href="http://dimplejs.org">Dimple.js</a> and <a href="http://nvd3.org/">NVD3</a> for charts,  and <a href="https://github.com/shutterstock/rickshaw">Rickshaw</a> for time series graphs, and <a href="http://c3js.org/">C3.js</a> that I have used for dynamic charts;</li>
+<li>Excel: <a href="https://chartio.com/">chartio</a>, <a href="http://raw.densitydesign.org/">RAW</a> and <a href="https://datawrapper.de/">Datawrapper</a>.</li>
+</ul>
+
+<p><em>UPDATE</em>: there&rsquo;s much more higher level visualization tools worth having a look, to name a few, <a href="http://visual.ly/">visual.ly</a> (full featured services) and <a href="http://square.github.com/cubism/">cubism</a> (for time-series).</p>
+
+<h3 id="toc_13">10 rules for coding with D3</h3>
+
+<p>The <a href="http://geography.wisc.edu/cartography/blog/10-rules-for-coding-with-d3/">article</a> is from the course&rsquo;s additional reading.</p>
+
+<ol>
+<li>Put each new method on its own indented line.</li>
+<li>If your code breaks, look for a wayward semicolon.</li>
+<li>The methods depend on how the operand was created.</li>
+<li>Create only one new element (set) per block.</li>
+<li>Assign each block to a logical variable.</li>
+<li>Assign each new element a class name identical to the block name.</li>
+<li>Always pass the block’s name as a class selector to the .selectAll method, even when creating an empty selection.</li>
+<li>Assign static or default styles using a CSS stylesheet.</li>
+<li>For dynamic inline style rules, use .style instead of .attr.</li>
+<li>Make sure the data are the correct type (Number/String/Boolean) for the operations using them.</li>
+</ol>
+
+<h3 id="toc_14">Dimple.js</h3>
+
+<p>Why dimple? Built on top of D3, easy to learn, and most uniquely, <strong>exposed to D3</strong> (return D3 object).</p>
+
+<p>But I skipped the Dimple.js lectures since I want to focus on D3 and Dimple is just <em>one</em> of the advanced wrapper on top of D3. Maybe I will come back and re-visit Dimple later.</p>
+
+<h3 id="toc_15">Chrome&rsquo;s DevTools</h3>
+
+<p>How to use chrome&rsquo;s Javascript debugger (add a <code>debugger;</code> line and the parsing will stop there) and print the data in a pretty way (use <code>console.table(data)</code> in console, the data should not be too large though) is fresh to me. And I really love Chrome :)</p>
+
+<p>There&rsquo;s another course about it on <a href="http://discover-devtools.codeschool.com/">codeschool</a> I&rsquo;d like to try.</p>
+
+<h3 id="toc_16">The magic of D3</h3>
+
+<p>Read throught these materials, you will get the beauty of D3.</p>
+
+<ul>
+<li><a href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, the basic</li>
+<li><a href="http://bost.ocks.org/mike/selection/">How selection works</a>, understanding from implementation</li>
+<li><a href="http://bl.ocks.org/mbostock/3808234">General Update Pattern, III</a>, animated <em>enter-update-exit</em></li>
+</ul>
+
+<h3 id="toc_17">Functions</h3>
+
+<p><code>d3.nest()</code> is a group-then-aggregate function (like map-reduce), <code>.key()</code> is for grouping and <code>.rollup()</code> is for aggregating.</p>
+
+<p><em>UPDATE</em>: more on D3 in the upcoming post &hellip;</p>
+
+<h3 id="toc_18">Final project</h3>
+
+<p>Please wait for the final project coming out :)</p>
+
+			</div>
+		</div>
+		
+	</div>
+</article>
+
+
+
+
+
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<ul class="list-inline text-center">
+					
+					<li>
+						<a target="_blank" href=https://github.com/ShevaXu>
+							<span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+						</a>
+					</li>
+					  
+					<li>
+						<div class="copyright text-muted">Powered by
+							<a target="_blank" href="http://gohugo.io">
+								<img src="http://shevaxu.github.io/img/hugo44.ico" />
+							</a>
+						</div>
+					</li>
+				</ul>
+				<p class="copyright text-muted">Copyright &copy; Sheva Xu 2014-2015</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+	
+	
+	<a class="back-to-top">
+		<i class="fa fa-chevron-circle-up fa-5x fa-square"></i>
+	</a>
+	
+	
+	<script src="http://shevaxu.github.io/js/jquery-2.1.3.min.js"></script>	
+	
+	<script src="http://shevaxu.github.io/js/bootstrap.min.js"></script>
+	
+	<script src="http://shevaxu.github.io/js/clean-blog.min.js"></script>
+	
+	
+	<script src="http://shevaxu.github.io/js/highlight.pack.js"></script>
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	
+	
+	<script>
+		$(document).ready(function() {
+			var offset = 220;
+			var duration = 500;
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > offset) {
+					$(".back-to-top").fadeIn(duration);
+				} else {
+					$(".back-to-top").fadeOut(duration);
+				}
+			});
+		
+			$(".back-to-top").click(function(event) {
+				event.preventDefault();
+				$("html, body").animate({scrollTop: 0}, duration);
+				return false;
+			})
+		});
+	</script>
+
+</body>
+
+</html>
