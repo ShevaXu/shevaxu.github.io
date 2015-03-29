@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Development on Space of Sheva </title>
+      <title>Reviewer on Space of Sheva </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://ShevaXu.github.io/categories/development/index.xml/</link>
+    <link>http://ShevaXu.github.io/categories/reviewer/index.xml/</link>
     <language>en-us</language>
     <author>Sheva Xu</author>
     
@@ -341,36 +341,6 @@ window.onload = function() {
 &lt;h2 id=&#34;toc_6&#34;&gt;Look Ahead&lt;/h2&gt;
 
 &lt;p&gt;Anyway, the staffs I show above are the two most promising technology I recall when talking about videos. If you are not a developer nor in related industries, you may consider it a sip into some new juices. Hope you will think of these when you watch a 4K/8K movie through a browser in the future.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>What &amp; why</title>
-      <link>http://shevaxu.github.io/post/about/</link>
-      <pubDate>Sat, 13 Dec 2014 16:46:18 CST</pubDate>
-      <author>Sheva Xu</author>
-      <guid>http://shevaxu.github.io/post/about/</guid>
-      <description>&lt;p&gt;Hello world!&lt;/p&gt;
-
-&lt;p&gt;This post should be the first piece of content of my site. But I decide to rewrite it from the ground because I realize I had not figured out what the site was about at that time.&lt;/p&gt;
-
-&lt;p&gt;I was not intend to write blogs then. All I wanted was a place to experiment HTML/CSS/Javascript following my sudden interest in front-end development. But then I read the blog &lt;a href=&#34;http://www.shubhro.com/2014/12/27/software-engineers-should-write/&#34;&gt;&lt;em&gt;Software engineers should write&lt;/em&gt;&lt;/a&gt; and it did motivate me. Anyway, a clear thought is required to write codes as well as blogs and I should keep practicing it. (I understand this more profoundly after my first technical post, that&amp;rsquo;s another reason I rewrite this post.)&lt;/p&gt;
-
-&lt;p&gt;So this is a blog?&lt;/p&gt;
-
-&lt;p&gt;Well, I plan to make it more than a blog, but for now it appears to be just a set of posts (and nobody reads them). However, I try to make each single piece of them as interactive as possible. During the last few years, I get used to learn from online tutorials and &lt;em&gt;dynamic&lt;/em&gt; books (e.g., the latest &lt;a href=&#34;http://neuralnetworksanddeeplearning.com&#34;&gt;&lt;em&gt;Neural network and deep learning&lt;/em&gt;&lt;/a&gt;) instead of static materails. I think it is a much more comprehensive way to share knowledges, especially for IT related topics.&lt;/p&gt;
-
-&lt;p&gt;I have spent weeks to explore and weight the options for building my site, and finally chose &lt;em&gt;Github&lt;/em&gt; as the host and &lt;a href=&#34;http://gohugo.io/&#34;&gt;&lt;em&gt;Hugo&lt;/em&gt;&lt;/a&gt; as the generator. Why? Github is &lt;em&gt;free&lt;/em&gt; and simply great, and &lt;em&gt;Hugo&lt;/em&gt; is really &amp;ldquo;A fast &amp;amp; modern static website engine&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;The problem left is that they are both static &amp;ndash; it is not saying the pages are not dynamic, but the site can be think of a pure front-end (bunch of HTMLs). The host (Github) is just a blackboard that provides no back-end interaction (database update). It bothered me for a while but then I realized it doesn&amp;rsquo;t matter (and it can be walked around like the embedded &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt; commenting system, if it&amp;rsquo;s important to you).&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s all in brief. Now the journey has begun, keep going!&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Por los momentos difíciles, ya entendí que la flor más bella sería siempre para mi.&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash; Lydia, by F.I.R.&lt;/p&gt;
-&lt;/blockquote&gt;
 </description>
     </item>
     
